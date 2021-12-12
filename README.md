@@ -1,4 +1,8 @@
-# os-template
+# OS Website Template for Vue.js
+Vue.js template for developers who wish to create interactive OS websites.
+
+Basic template for OS websites with window controlling logic implementation for Vue.js. 
+Coming soon...
 
 ## Project setup
 ```
