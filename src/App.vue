@@ -1,40 +1,43 @@
 <template>
   <div id="app">
     <div class="screen" id="screen" style="position: relative; z-index: 100;">
-      <div @click="openWindow" style="z-index: 1000; color: white;" class="square">click here</div>
-      <Window style="position: absolute;" v-if="this.window" v-on:closeWindow="updateWindow"></Window>
+      <div v-on:click="openWindow" style="z-index: 1000; color: white;" class="square">click here</div>
+      <Window style="position: absolute;" :WindowFullscreenStateProp="false" :WindowIconStateProp="red" :WindowStateProp="close" :WindowZIndexProp="1"></Window>
+      <!-- 
+        Todo:
+        - Hide window using state within App.vue
+        - Pass state of window to Navbar.vue
+        - Check store for more notes
+       -->
     </div>
+    <navbar />
   </div>
 </template>
 
 <script>
+import Navbar from './components/Navbar.vue'
 import Window from './components/Window.vue'
 export default {
   name: 'App',
   data: function() {
     return {
-      window: false
+
     }
+  },
+  components: {
+    Window,
+    Navbar
   },
   computed: {
         style() {
             return {
-                '--fullscreen': window.innerHeight - 40 + "px"
+                '--fullscreen': window.innerHeight - 40 + "px" // 40px is the height of the Navbar component
             };
         }
     },
   mounted() {
+        // Ensures windows can move freely
         document.getElementById('screen').style.height = window.innerHeight - 40 + "px";
-        document.addEventListener("keydown", function(e) {
-            if ((window.navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey) && e.keyCode == 83) {
-                e.preventDefault();
-                if (this.$store.getters.activeWindow == "Stickies") {
-                    console.log('cmd s up coz stickies on')
-                } else {
-                    console.log('not caught')
-                }
-            }
-        }, false);
         // We listen to the resize event
         window.addEventListener('resize', () => {
             // We execute the same script as before
@@ -52,16 +55,9 @@ export default {
         // called to initially set the height.
         resetHeight();
     },
-  components: {
-    Window
-  },
   methods : {
-    openWindow() {
-      this.window = true
-    },
-    updateWindow() {
-        this.window = !this.window
-    }
+    // we need methods to interact with private states in encapsulated components
+
   }
 }
 </script>
@@ -103,21 +99,13 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background: #018281;
+    background: rgb(158, 158, 158);
 }
 
 body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-}
-
-@media (prefers-color-scheme: dark) {
-    body {
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-    }
 }
 
 .bar-container {
@@ -136,11 +124,5 @@ body {
     position: fixed;
     bottom: 0;
     width: 100%;
-}
-
-.icon-image {
-    width: 15px;
-    height: 15px;
-    margin-right: 5px;
 }
 </style>

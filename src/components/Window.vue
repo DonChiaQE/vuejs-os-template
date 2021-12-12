@@ -63,7 +63,7 @@
     min-width: 350px;
     height: 500px;
     width: 600px;
-    background: white;
+    background: rgb(70, 70, 70);
     overflow: hidden;
     max-height: 100%;
     max-width: 100%;
@@ -170,11 +170,20 @@ background: rgb(192, 192, 192);
 import interact from "interactjs";
 export default {
     props: {
-        // shownProp: Boolean
-        showWindow: Boolean
+        WindowStateProp: String,
+        WindowIconStateProp: String,
+        WindowFullscreenStateProp: Boolean,
+        WindowZIndexProp: Number,
     },
     data: function() {
         return {
+
+            // states (???)
+            WindowState: this.WindowStateProp, // open, close, minimize
+            WindowIconState: this.WindowIconStateProp, // red, green, yellow
+            WindowFullscreen: this.WindowFullscreenStateProp, // false, true
+            ZIndexValue: this.WindowZIndexProp, // increments 
+
             resizeOption: {
                 edges: { top: true, left: true, bottom: true, right: true },
 
@@ -212,9 +221,50 @@ export default {
         }
     },
     methods: {
+        // functions to interact with window state
+
         closeWindow() {
-            this.$emit('closeWindow');
+            this.WindowState = 'close';
         },
+
+        openWindow() {
+            this.WindowState = 'open';
+        },
+
+        minimizeWindow() {
+            this.WindowState = 'minimize';
+        },
+
+        // function to interact with window icon state
+
+        closeIcon() {
+            this.WindowIconState = 'red';
+        },
+
+        openIcon() {
+            this.WindowIconState = 'green';
+        },
+
+        minimizeIcon() {
+            this.WindowIconState = 'yellow';
+        },
+
+        // function to interact with window fullscreen state
+
+        fullscreen() {
+            this.WindowFullscreen = 'true';
+        },
+
+        minimize() {
+            this.WindowFullscreen = 'false';
+        },
+
+        // function to interact with window z-index
+
+        incrementZIndex() {
+            this.ZIndexValue++;
+        },
+
         dragmove(event) {
             this.x += event.dx;
             this.y += event.dy;
