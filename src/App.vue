@@ -1,14 +1,16 @@
 <template>
   <div id="app">
     <div class="screen" id="screen" style="position: relative; z-index: 100;">
-      <div v-on:click="openWindow" style="z-index: 1000; color: white;" class="square">click here</div>
-      <Window style="position: absolute;" :WindowFullscreenStateProp="false" :WindowIconStateProp="red" :WindowStateProp="close" :WindowZIndexProp="1"></Window>
+      <div v-on:click="openWindowOne" style="z-index: 1000; color: white;" class="square">click here</div>
+      <window-one id="WindowOne" style="position: absolute;" v-if="$store.getters.getWindowById('WindowOne').windowState=='open'"></window-one>
+      <!-- <window-two style="position: absolute;" ></window-two> -->
       <!-- 
         Todo:
         - Hide window using state within App.vue
         - Pass state of window to Navbar.vue
         - Check store for more notes
        -->
+       <div>{{$store.getters.getActiveWindow}}</div>
     </div>
     <navbar />
   </div>
@@ -16,7 +18,8 @@
 
 <script>
 import Navbar from './components/Navbar.vue'
-import Window from './components/Window.vue'
+import WindowOne from './components/WindowOne.vue'
+// import WindowTwo from './components/WindowTwo.vue'
 export default {
   name: 'App',
   data: function() {
@@ -25,8 +28,9 @@ export default {
     }
   },
   components: {
-    Window,
-    Navbar
+    WindowOne,
+    // WindowTwo,
+    Navbar,
   },
   computed: {
         style() {
@@ -57,7 +61,10 @@ export default {
     },
   methods : {
     // we need methods to interact with private states in encapsulated components
-
+    openWindowOne() {
+      const payload = {'windowState': 'open', 'windowID': 'WindowOne'}
+      this.$store.commit('setWindowState', payload)
+    },
   }
 }
 </script>

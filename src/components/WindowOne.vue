@@ -169,20 +169,14 @@ background: rgb(192, 192, 192);
 <script>
 import interact from "interactjs";
 export default {
-    props: {
-        WindowStateProp: String,
-        WindowIconStateProp: String,
-        WindowFullscreenStateProp: Boolean,
-        WindowZIndexProp: Number,
-    },
+    name: "WindowOne", // VERY IMPORTANT TO NAME YOUR COMPONENT <--
     data: function() {
         return {
+            // name
+            ComponentName: this.$options.name,
 
-            // states (???)
-            WindowState: this.WindowStateProp, // open, close, minimize
-            WindowIconState: this.WindowIconStateProp, // red, green, yellow
-            WindowFullscreen: this.WindowFullscreenStateProp, // false, true
-            ZIndexValue: this.WindowZIndexProp, // increments 
+            // states
+            WindowFullscreen: false, // false, true
 
             resizeOption: {
                 edges: { top: true, left: true, bottom: true, right: true },
@@ -224,52 +218,29 @@ export default {
         // functions to interact with window state
 
         closeWindow() {
-            this.WindowState = 'close';
+            console.log('close')
+            const payload = {'windowState': 'close', 'windowID': this.ComponentName}
+            this.$store.commit('setWindowState', payload)
         },
 
-        openWindow() {
-            this.WindowState = 'open';
+        openWindow(e) {
+            e.stopPropagation();
+            let payload = {'windowState': 'open', 'windowID': this.ComponentName}
+            this.$store.commit('set'+this.ComponentName, payload)
         },
 
-        minimizeWindow() {
-            this.WindowState = 'minimize';
+        minimizeWindow(e) {
+            e.stopPropagation();
+            this.$store.commit('set'+this.ComponentName, 'minimize', this.ComponentName)
         },
 
-        // function to interact with window icon state
-
-        closeIcon() {
-            this.WindowIconState = 'red';
-        },
-
-        openIcon() {
-            this.WindowIconState = 'green';
-        },
-
-        minimizeIcon() {
-            this.WindowIconState = 'yellow';
-        },
-
-        // function to interact with window fullscreen state
-
-        fullscreen() {
-            this.WindowFullscreen = 'true';
-        },
-
-        minimize() {
-            this.WindowFullscreen = 'false';
-        },
-
-        // function to interact with window z-index
-
-        incrementZIndex() {
-            this.ZIndexValue++;
-        },
+        // drag events
 
         dragmove(event) {
             this.x += event.dx;
             this.y += event.dy;
-            this.$store.commit('zIndexIncrement', 'bio')
-        },
+            this.$store.commit('zIndexIncrement', this.ComponentName) // this is important
+        }, 
         resizemove(event) {
             this.w = event.rect.width;
             this.h = event.rect.height;
@@ -299,16 +270,6 @@ export default {
             document.onmouseup = null
             document.onmousemove = null
         },
-        minimizeBio(e) {
-            e.stopPropagation()
-            this.$store.commit('toggleShownBio', false)
-            this.$store.commit('changeActiveWindow', 'Finder')
-        },
-        closeBio(e) {
-            e.stopPropagation()
-            this.$store.commit('toggleCloseBio', false)
-            this.$store.commit('toggleShownBio', false)
-        }
     },
     mounted: function() {
         // Query the element

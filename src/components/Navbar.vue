@@ -1,6 +1,6 @@
 <template>
     <div class="navbar-container">
-        <div class="icon" @windowModify="changeIconColor" :style="{'background-color':this.windowIcon}">
+        <div class="icon" :style="{'background-color':this.windowIcon}">
         </div>
     </div>
 </template>
@@ -22,11 +22,6 @@
 
 <script>
 export default {
-    data() {
-        return {
-            windowIcon: 'red' // States: ['red', 'yellow', 'green']
-        }
-    },
     methods: {
         changeIconColor(color) {
             this.windowIcon = color
