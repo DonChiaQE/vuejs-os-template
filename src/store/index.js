@@ -6,7 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     // Active Window State
-    activeWindow: 'Nil', // Name of first window you want
+    activeWindow: 'nil', // Name of first window you want
 
     // Z-index counter
     zIndex: 2, // Z-index has to be incremented
@@ -20,18 +20,20 @@ export default new Vuex.Store({
         id: 'WindowTwo',
         windowState: 'close',
       },
+      // register your new windows here
     ]
     // State of windows will be linked to navbar icons
   },
   mutations: {
     // Active Window Mutator
     setActiveWindow(state, window) {
+      console.log(window)
       state.activeWindow = window
     },
 
     // Z-index increment function
     zIndexIncrement(state, windowID) {
-      console.log("zindex upgraded")
+      console.log("zindex upgraded" + this.zIndex)
       state.zIndex += 1
       document.getElementById(windowID).style.zIndex = state.zIndex
     },
@@ -44,14 +46,19 @@ export default new Vuex.Store({
       const window = getArrItem()
       if (payload.windowState == 'open') {
         window.windowState = payload.windowState
-        this.commit("zIndexIncrement", payload.windowID)
-        this.commit("setActiveWindow", payload.windowID)
+        setTimeout(() => {  
+          this.commit("zIndexIncrement", payload.windowID)
+        }, 1);
+        setTimeout(() => {  
+          this.commit("setActiveWindow", payload.windowID)
+        }, 1);
       } else if (payload.windowState == 'close') {
         window.windowState = payload.windowState
         this.commit("setActiveWindow", "nil") // This depends on the OS you're mimicking (Window -> nil, MacOS -> Finder)
       } else if (payload.windowState == 'minimize') {
         window.windowState = payload.windowState
         this.commit("setActiveWindow", "nil")  // This depends on the OS you're mimicking (Window -> nil, MacOS -> Finder)
+        console.log("minimized")
       } else {
         console.log("Error: windowState not found")
       }

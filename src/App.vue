@@ -1,45 +1,39 @@
 <template>
-  <div id="app">
+<div id="app">
     <div class="screen" id="screen" style="position: relative; z-index: 100;">
-      <div v-on:click="openWindowOne" style="z-index: 1000; color: white;" class="square">click here</div>
-      <window-one id="WindowOne" style="position: absolute;" v-if="$store.getters.getWindowById('WindowOne').windowState=='open'"></window-one>
-      <!-- <window-two style="position: absolute;" ></window-two> -->
-      <!-- 
-        Todo:
-        - Hide window using state within App.vue
-        - Pass state of window to Navbar.vue
-        - Check store for more notes
-       -->
-       <div>{{$store.getters.getActiveWindow}}</div>
+        <div v-on:click="openWindowOne" style="z-index: 1000; color: white;" class="square">Window One</div>
+        <div v-on:click="openWindowTwo" style="z-index: 1000; color: white;" class="square">Window Two</div>
+        <window-one id="WindowOne" style="position: absolute; right: 10vw;" v-if="$store.getters.getWindowById('WindowOne').windowState=='open' || $store.getters.getWindowById('WindowOne').windowState=='minimize'"></window-one>
+        <window-two id="WindowTwo" style="position: absolute; left: 10vw;" v-if="$store.getters.getWindowById('WindowTwo').windowState=='open' || $store.getters.getWindowById('WindowOne').windowState=='minimize'"></window-two>
     </div>
     <navbar />
-  </div>
+</div>
 </template>
 
 <script>
 import Navbar from './components/Navbar.vue'
 import WindowOne from './components/WindowOne.vue'
-// import WindowTwo from './components/WindowTwo.vue'
+import WindowTwo from './components/WindowTwo.vue'
 export default {
-  name: 'App',
-  data: function() {
-    return {
+    name: 'App',
+    data: function () {
+        return {
 
-    }
-  },
-  components: {
-    WindowOne,
-    // WindowTwo,
-    Navbar,
-  },
-  computed: {
+        }
+    },
+    components: {
+        WindowOne,
+        WindowTwo,
+        Navbar,
+    },
+    computed: {
         style() {
             return {
-                '--fullscreen': window.innerHeight - 40 + "px" // 40px is the height of the Navbar component
+                '--fullscreen': window.innerHeight - 50 + "px" // 40px is the height of the Navbar component
             };
         }
     },
-  mounted() {
+    mounted() {
         // Ensures windows can move freely
         document.getElementById('screen').style.height = window.innerHeight - 40 + "px";
         // We listen to the resize event
@@ -59,13 +53,23 @@ export default {
         // called to initially set the height.
         resetHeight();
     },
-  methods : {
-    // we need methods to interact with private states in encapsulated components
-    openWindowOne() {
-      const payload = {'windowState': 'open', 'windowID': 'WindowOne'}
-      this.$store.commit('setWindowState', payload)
-    },
-  }
+    methods: {
+        // we need methods to interact with private states in encapsulated components
+        openWindowOne() {
+            const payload = {
+                'windowState': 'open',
+                'windowID': 'WindowOne'
+            }
+            this.$store.commit('setWindowState', payload)
+        },
+        openWindowTwo() {
+            const payload = {
+                'windowState': 'open',
+                'windowID': 'WindowTwo'
+            }
+            this.$store.commit('setWindowState', payload)
+        },
+    }
 }
 </script>
 
@@ -75,12 +79,25 @@ html {
 }
 
 .square {
-  width: 100px;
-  height: 100px;
-  background-color: #000;
+    width: 50px;
+    height: 50px;
+    background-color: #000;
+    border-radius: 12px;
+    margin: 20px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.square:hover {
+  cursor: pointer;
 }
 
 #app {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     display: flex;
@@ -106,13 +123,9 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background: rgb(158, 158, 158);
-}
-
-body {
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+    background: #405CB1;
+    background-size: 20px 20px;
+    background-image: linear-gradient(to right, rgb(154, 190, 255, 0.2) 1px, transparent 1px), linear-gradient(to bottom, rgb(154, 190, 255, 0.2) 1px, transparent 1px);
 }
 
 .bar-container {
