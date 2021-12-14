@@ -3,7 +3,7 @@
     <div class="screen" id="screen" style="position: relative; z-index: 100;">
         <div v-on:click="openWindowOne" style="z-index: 1000; color: white;" class="square">Window One</div>
         <div v-on:click="openWindowTwo" style="z-index: 1000; color: white;" class="square">Window Two</div>
-        <window-one id="WindowOne" style="position: absolute; right: 10vw;" v-if="$store.getters.getWindowById('WindowOne').windowState=='open' || $store.getters.getWindowById('WindowOne').windowState=='minimize'"></window-one>
+        <window-one id="WindowOne" style="position: absolute; " v-if="$store.getters.getWindowById('WindowOne').windowState=='open' || $store.getters.getWindowById('WindowOne').windowState=='minimize'"></window-one>
         <window-two id="WindowTwo" style="position: absolute; left: 10vw;" v-if="$store.getters.getWindowById('WindowTwo').windowState=='open' || $store.getters.getWindowById('WindowOne').windowState=='minimize'"></window-two>
     </div>
     <navbar />

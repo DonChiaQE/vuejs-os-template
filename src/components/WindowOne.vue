@@ -217,6 +217,7 @@ export default {
         },
 
         setActiveWindow() {
+            console.log("set")
             this.$store.commit('zIndexIncrement', this.ComponentName)
             this.$store.commit('setActiveWindow', this.ComponentName)
         },
