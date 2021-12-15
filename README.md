@@ -6,25 +6,57 @@ Vue.js template for developers who wish to create interactive OS websites.
 Basic template for OS websites with window controlling logic implementation for Vue.js. 
 Coming soon...
 
-## Project setup
+# Development
+- [x] Basic Windows Logic
+- [x] Window zindex
+- [x] Drag Windows
+- [x] Resize Windows
+- [x] Window State Management
+- [x] Window Fullscreen
+- [x] Window Close
+- [ ] Window Minimize
+- [ ] Navbar
+- [ ] App Grid
+- [ ] Basic styling for Mac variant
+- [ ] Basic Styling for Windows variant
+- [ ] Basic Styling for Linux variant
+- [ ] Accessibility
+
+# Project Overview
+👋 Hello Stranger, if you've somehow stumbled across this repository, you're probably early. Here are some instructions for setting up and using the template.
+
+## Pre-requisites
+- Vue 2 
+- CSS 
+- Patience with CSS
+
+## Instructions to run project
+
+1. Clone the project
+
 ```
-npm install
+$ git clone https://github.com/dhs17y2adonchia/vuejs-os-template.git'
 ```
 
-### Compiles and hot-reloads for development
+
+2. Make sure you have Vue.js installed 
+
+[Official Documentation from Vue](https://vuejs.org/v2/guide/installation.html)
+
+
+3. Cd into project folder and install packages + dependencies
+
+
 ```
-npm run serve
+$ cd vuejs-os-template && npm install
 ```
 
-### Compiles and minifies for production
+4. Serve project
+
 ```
-npm run build
+$ npm run serve
 ```
 
-### Lints and fixes files
-```
-npm run lint
-```
+## How to Add Additional Windows 
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Coming soon...
