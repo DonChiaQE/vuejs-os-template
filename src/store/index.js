@@ -58,7 +58,7 @@ export default new Vuex.Store({
       } else if (payload.windowState == 'minimize') {
         window.windowState = payload.windowState
         this.commit("setActiveWindow", "nil")  // This depends on the OS you're mimicking (Window -> nil, MacOS -> Finder)
-        console.log("minimized")
+        console.log(payload.windowID + "minimized")
       } else {
         console.log("Error: windowState not found")
       }

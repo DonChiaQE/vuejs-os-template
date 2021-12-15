@@ -4,7 +4,7 @@
         <div v-on:click="openWindowOne" style="z-index: 1000; color: white;" class="square">Window One</div>
         <div v-on:click="openWindowTwo" style="z-index: 1000; color: white;" class="square">Window Two</div>
         <window-one id="WindowOne" style="position: absolute; left: 15vw; top: 15vh" v-if="$store.getters.getWindowById('WindowOne').windowState=='open' || $store.getters.getWindowById('WindowOne').windowState=='minimize'"></window-one>
-        <window-two id="WindowTwo" style="position: absolute; left: 10vw;" v-if="$store.getters.getWindowById('WindowTwo').windowState=='open' || $store.getters.getWindowById('WindowOne').windowState=='minimize'"></window-two>
+        <window-two id="WindowTwo" style="position: absolute; left: 10vw;" v-if="$store.getters.getWindowById('WindowTwo').windowState=='open' || $store.getters.getWindowById('WindowTwo').windowState=='minimize'"></window-two>
     </div>
     <navbar />
 </div>
@@ -29,7 +29,7 @@ export default {
     computed: {
         style() {
             return {
-                '--fullscreen': window.innerHeight - 50 + "px" // 40px is the height of the Navbar component
+                '--fullscreen': window.innerHeight - 50 + "px" // 50px is the height of the Navbar component
             };
         }
     },
