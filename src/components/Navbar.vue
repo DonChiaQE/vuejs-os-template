@@ -1,7 +1,6 @@
 <template>
 <div class="navbar-container">
-    <div class="icon" :style="{'background-color':this.windowIcon}">
-    </div>
+    <div class="icon" :style="{'background-color':this.windowIcon}"></div>
     <div class="spacer"></div>
     <div class="label">Active Window: {{$store.getters.getActiveWindow}}</div>
 </div>
@@ -38,6 +37,11 @@
 
 <script>
 export default {
+    data: function() {
+        return {
+            windows: this.$store.getters.getWindows
+        }
+    },
     methods: {
         changeIconColor(color) {
             this.windowIcon = color

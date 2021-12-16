@@ -117,8 +117,9 @@
 }
 
 .content {
-    flex: 1 1 auto;
     overflow: scroll;
+    flex: 1 1 auto;
+    overflow-x: hidden;
     padding-right: 15%;
     padding-left: 15%;
     padding-top: 5%;

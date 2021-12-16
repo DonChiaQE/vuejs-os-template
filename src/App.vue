@@ -1,10 +1,15 @@
 <template>
 <div id="app">
     <div class="screen" id="screen" style="position: relative; z-index: 100;">
-        <div v-on:click="openWindowOne" style="z-index: 1000; color: white;" class="square">Window One</div>
-        <div v-on:click="openWindowTwo" style="z-index: 1000; color: white;" class="square">Window Two</div>
-        <window-one id="WindowOne" style="position: absolute; left: 15vw; top: 15vh" v-if="$store.getters.getWindowById('WindowOne').windowState=='open' || $store.getters.getWindowById('WindowOne').windowState=='minimize'"></window-one>
-        <window-two id="WindowTwo" style="position: absolute; left: 10vw;" v-if="$store.getters.getWindowById('WindowTwo').windowState=='open' || $store.getters.getWindowById('WindowTwo').windowState=='minimize'"></window-two>
+        <div v-for="window in windows" :key="window.key">
+            <div v-on:click="openWindow(window.windowName)" style="z-index: 1000; color: white;" class="square">{{window.displayName}}</div>
+        </div>  
+        <div v-for="window in windows" :key="window.key">
+            <component v-bind:is="window.windowName" :id="window.windowName" :style="{position: window.position, left: window.positionX, top: window.positionY}" v-if="windowCheck(window.windowName)"></component>
+        </div>
+        <!-- Todo:
+        - Extract v-if into a function 
+        - Create separate app grid -->
     </div>
     <navbar />
 </div>
@@ -18,7 +23,22 @@ export default {
     name: 'App',
     data: function () {
         return {
-
+            windows: [
+                {
+                    'windowName': 'WindowOne',
+                    'displayName': 'Window One',
+                    'position': 'absolute',
+                    'positionX': '15vw',
+                    'positionY': '15vh',
+                }, 
+                {
+                    'windowName': 'WindowTwo',
+                    'displayName': 'Window Two',
+                    'position': 'absolute',
+                    'positionX': '10vw',
+                    'positionY': '10vh',
+                }
+                ]
         }
     },
     components: {
@@ -54,21 +74,21 @@ export default {
         resetHeight();
     },
     methods: {
+        openWindow(windowId) {
+            const payload = {
+                'windowState': 'open',
+                'windowID': windowId
+            }
+            this.$store.commit('setWindowState', payload)
+        },
+
+        windowCheck(windowId) {
+            console.log(windowId)
+            if (this.$store.getters.getWindowById(windowId).windowState=='open' || this.$store.getters.getWindowById(windowId).windowState=='minimize') {
+                return true
+            }
+        }
         // we need methods to interact with private states in encapsulated components
-        openWindowOne() {
-            const payload = {
-                'windowState': 'open',
-                'windowID': 'WindowOne'
-            }
-            this.$store.commit('setWindowState', payload)
-        },
-        openWindowTwo() {
-            const payload = {
-                'windowState': 'open',
-                'windowID': 'WindowTwo'
-            }
-            this.$store.commit('setWindowState', payload)
-        },
     }
 }
 </script>
@@ -92,7 +112,7 @@ html {
 }
 
 .square:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 #app {

@@ -19,20 +19,20 @@ export default new Vuex.Store({
       {
         id: 'WindowTwo',
         windowState: 'close',
-      },
+      }
       // register your new windows here
     ]
     // State of windows will be linked to navbar icons
   },
   mutations: {
     // Active Window Mutator
-    setActiveWindow(state, window) {
+    async setActiveWindow(state, window) {
       console.log(window)
       state.activeWindow = window
     },
 
     // Z-index increment function
-    zIndexIncrement(state, windowID) {
+    async zIndexIncrement(state, windowID) {
       console.log("zindex upgraded" + this.zIndex)
       state.zIndex += 1
       document.getElementById(windowID).style.zIndex = state.zIndex
@@ -60,7 +60,7 @@ export default new Vuex.Store({
         this.commit("setActiveWindow", "nil")  // This depends on the OS you're mimicking (Window -> nil, MacOS -> Finder)
         console.log(payload.windowID + "minimized")
       } else {
-        console.log("Error: windowState not found")
+        console.log("Error: windowState not found or invalid")
       }
     }
   },
