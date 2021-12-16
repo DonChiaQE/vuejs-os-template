@@ -10,6 +10,7 @@
 - [x] Window Fullscreen
 - [x] Window Close
 - [ ] Window Minimize
+- [ ] Simplifying Process of Registering Components
 - [ ] Navbar
 - [ ] App Grid
 - [ ] Basic styling for Mac variant
