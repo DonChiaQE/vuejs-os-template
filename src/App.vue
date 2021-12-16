@@ -69,7 +69,7 @@ export default {
 
         windowCheck(windowId) {
             console.log(windowId)
-            if (this.$store.getters.getWindowById(windowId).windowState=='open' || this.$store.getters.getWindowById(windowId).windowState=='minimize') {
+            if (this.$store.getters.getWindowById(windowId).windowState=='open') {
                 return true
             }
         }
