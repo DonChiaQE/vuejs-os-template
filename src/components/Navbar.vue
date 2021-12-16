@@ -1,6 +1,11 @@
 <template>
 <div class="navbar-container">
-    <div class="icon" :style="{'background-color':this.windowIcon}"></div>
+    <!-- <div class="icon" :style="{'background-color':this.windowIcon}"></div> -->
+    <div v-for="window in windows" :key="window.key">
+        <div v-if="window.windowState=='open'" v-on:click="openWindow(window.windowId)" :style="{background : 'green'}" style="z-index: 1000; color: white;" class="square">{{window.displayName}}</div>
+        <div v-if="window.windowState=='minimize'" v-on:click="openWindow(window.windowId)" :style="{background : 'yellow'}" style="z-index: 1000; color: white;" class="square">{{window.displayName}}</div>
+        <div v-if="window.windowState=='close'" v-on:click="openWindow(window.windowId)" :style="{background : 'red'}" style="z-index: 1000; color: white;" class="square">{{window.displayName}}</div>
+    </div>
     <div class="spacer"></div>
     <div class="label">Active Window: {{$store.getters.getActiveWindow}}</div>
 </div>
@@ -37,18 +42,21 @@
 
 <script>
 export default {
+    name: 'Navbar',
     data: function() {
         return {
-            windows: this.$store.getters.getWindows
+            windows: this.$store.getters.getWindows,
+            iconColor: 'red'
         }
     },
     methods: {
-        changeIconColor(color) {
-            this.windowIcon = color
-        }
+
     },
     created: function () {
         this.$parent.$on('windowModify', this.changeIconColor);
+    },
+    mounted () {
+        
     }
 }
 </script>

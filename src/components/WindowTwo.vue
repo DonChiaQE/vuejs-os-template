@@ -147,10 +147,10 @@ export default {
                     bottom: true,
                     right: true
                 },
-                margin: 5,
+                margin: 10,
                 modifiers: [
                     // interact.modifiers.restrictRect({
-                    //     restriction: "parent",
+                    //     restriction: "body",
                     //     endOnly: true
                     // })
                 ],
@@ -164,7 +164,7 @@ export default {
             dragOption: {
                 modifiers: [
                     interact.modifiers.restrictRect({
-                        restriction: "parent",
+                        restriction: "body",
                         endOnly: true
                     })
                 ],

@@ -13,12 +13,20 @@ export default new Vuex.Store({
 
     windows: [
       {
-        id: 'WindowOne', // this needs to match ID and name
+        windowId: 'WindowOne', // this needs to match ID, name and file name
         windowState: 'close',
+        displayName: 'Window One',
+        position: 'absolute',
+        positionX: '15vw',
+        positionY: '15vh',
       },
       {
-        id: 'WindowTwo',
+        windowId: 'WindowTwo', // this needs to match ID, name and file name
         windowState: 'close',
+        displayName: 'Window Two',
+        position: 'absolute',
+        positionX: '10vw',
+        positionY: '10vh',
       }
       // register your new windows here
     ]
@@ -27,13 +35,11 @@ export default new Vuex.Store({
   mutations: {
     // Active Window Mutator
     async setActiveWindow(state, window) {
-      console.log(window)
       state.activeWindow = window
     },
 
     // Z-index increment function
     async zIndexIncrement(state, windowID) {
-      console.log("zindex upgraded" + this.zIndex)
       state.zIndex += 1
       document.getElementById(windowID).style.zIndex = state.zIndex
     },
@@ -41,7 +47,7 @@ export default new Vuex.Store({
     // Window State Mutator
     setWindowState(state, payload) { // payload = {'windowState': 'open', 'windowID': 'WindowOne'} 
       function getArrItem() {
-        return state.windows.find(windows => windows.id === payload.windowID);
+        return state.windows.find(windows => windows.windowId === payload.windowID);
       }
       const window = getArrItem()
       if (payload.windowState == 'open') {
@@ -70,19 +76,13 @@ export default new Vuex.Store({
       return state.activeWindow
     },
 
-    // WindowOne Getter
-    getWindowOne: state => {
-      return state.stateWindowOne
-    },
-
-    // WindowTwo Getter
-    getWindowTwo: state => {
-      return state.stateWindowTwo
-    },
-    
     // Window Getter
     getWindowById: (state) => (id) => {
-      return state.windows.find(window => window.id === id)
+      return state.windows.find(window => window.windowId === id)
+    },
+
+    getWindows: (state) => {
+      return state.windows
     }
   }
 })

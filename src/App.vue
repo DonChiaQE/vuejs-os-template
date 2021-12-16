@@ -2,10 +2,10 @@
 <div id="app">
     <div class="screen" id="screen" style="position: relative; z-index: 100;">
         <div v-for="window in windows" :key="window.key">
-            <div v-on:click="openWindow(window.windowName)" style="z-index: 1000; color: white;" class="square">{{window.displayName}}</div>
+            <div v-on:click="openWindow(window.windowId)" style="z-index: 1000; color: white;" class="square">{{window.displayName}}</div>
         </div>  
         <div v-for="window in windows" :key="window.key">
-            <component v-bind:is="window.windowName" :id="window.windowName" :style="{position: window.position, left: window.positionX, top: window.positionY}" v-if="windowCheck(window.windowName)"></component>
+            <component v-bind:is="window.windowId" :id="window.windowId" :style="{position: window.position, left: window.positionX, top: window.positionY}" v-if="windowCheck(window.windowId)"></component>
         </div>
         <!-- Todo:
         - Extract v-if into a function 
@@ -23,22 +23,7 @@ export default {
     name: 'App',
     data: function () {
         return {
-            windows: [
-                {
-                    'windowName': 'WindowOne',
-                    'displayName': 'Window One',
-                    'position': 'absolute',
-                    'positionX': '15vw',
-                    'positionY': '15vh',
-                }, 
-                {
-                    'windowName': 'WindowTwo',
-                    'displayName': 'Window Two',
-                    'position': 'absolute',
-                    'positionX': '10vw',
-                    'positionY': '10vh',
-                }
-                ]
+            windows: this.$store.getters.getWindows
         }
     },
     components: {
