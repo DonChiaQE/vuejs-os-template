@@ -11,6 +11,8 @@
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
     "vue-interactjs": "^0.1.10",
+    "vue-moment": "^4.1.0",
+    "vue2-touch-events": "^3.2.2",
     "vuex": "^3.4.0"
   },
   "devDependencies": {

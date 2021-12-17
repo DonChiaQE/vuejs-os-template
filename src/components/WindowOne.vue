@@ -104,6 +104,7 @@
     flex-direction: row;
     border-radius: 8px 8px 0px 0px;
     padding: 4px;
+    z-index: 5000;
 }
 
 .top-bar:hover {
