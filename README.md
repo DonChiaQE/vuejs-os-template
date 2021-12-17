@@ -11,7 +11,7 @@
 - [x] Window Close
 - [x] Window Minimize
 - [ ] Simplifying Process of Registering Components
-- [ ] Navbar
+- [x] Navbar
 - [ ] App Grid
 - [ ] Basic styling for Mac variant
 - [ ] Basic Styling for Windows variant
@@ -20,6 +20,12 @@
 
 # Project Overview
 👋 Hello Stranger, if you've somehow stumbled across this repository, you're probably early. Here are some instructions for setting up and using the template.
+
+## Technologies Used
+- Vue 2
+- Vuex 
+- InteractJS
+- MomentJS
 
 ## Pre-requisites
 - Vue 2 
