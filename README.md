@@ -9,7 +9,7 @@
 - [x] Window State Management
 - [x] Window Fullscreen
 - [x] Window Close
-- [ ] Window Minimize
+- [x] Window Minimize
 - [ ] Simplifying Process of Registering Components
 - [ ] Navbar
 - [ ] App Grid
