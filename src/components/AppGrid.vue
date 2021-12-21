@@ -1,10 +1,20 @@
 <template>
-<div class="grid-container">
-    <button class="icon" v-for="window in windows" :key="window.key" v-on:dblclick="openWindow(window.windowId)">
-        <img class="icon-image" :src="require('../assets/Icons/' + window.iconImage)" />
-        <p class="icon-text">{{window.displayName}}</p>
+<nav class="grid-container">
+    <button 
+        class="icon" 
+        v-for="window in windows" 
+        :key="window.key" v-on:dblclick="openWindow(window.windowId)"
+    >
+        <img 
+            class="icon-image" 
+            :src="require('../assets/icons/' + window.iconImage)"
+            alt="icon placeholder" 
+        />
+        <p class="icon-text">
+            {{window.displayName}}
+        </p>
     </button>
-</div>
+</nav>
 </template>
 
 <style scoped>

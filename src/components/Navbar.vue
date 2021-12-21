@@ -1,13 +1,34 @@
 <template>
-<div class="navbar-container">
-    <div v-for="window in windows" :key="window.key">
-        <div v-if="window.windowState=='open'" v-on:click="openWindow(window.windowId)" class="icon open">{{window.displayName}}</div>
-        <div v-if="window.windowState=='minimize'" v-on:click="openWindow(window.windowId)" class="icon minimize">{{window.displayName}}</div>
-        <div v-if="window.windowState=='close'" v-on:click="openWindow(window.windowId)" style="display: none;" class="icon">{{window.displayName}}</div>
+<nav class="navbar-container">
+    <div 
+        v-for="window in windows" 
+        :key="window.key"
+    >
+        <button 
+            v-if="window.windowState=='open'" 
+            v-on:click="openWindow(window.windowId)" 
+            class="icon open"
+        >
+        {{window.displayName}}
+        </button>
+        <button 
+            v-if="window.windowState=='minimize'" 
+            v-on:click="openWindow(window.windowId)" 
+            class="icon minimize"
+        >
+        {{window.displayName}}
+        </button>
+        <button 
+            v-if="window.windowState=='close'" 
+            v-on:click="openWindow(window.windowId)" 
+            class="icon close"
+        >
+        {{window.displayName}}
+        </button>
     </div>
     <div class="spacer"></div>
     <p class="label">Active Window: {{$store.getters.getActiveWindow}}</p>
-</div>
+</nav>
 </template>
 
 <style scoped>
@@ -29,6 +50,11 @@
     padding-left: 1rem;
     width: auto;
     height: 50px;
+    text-align: center;
+}
+
+.icon:hover {
+    cursor: pointer;
 }
 
 .open {
@@ -37,6 +63,10 @@
 
 .minimize {
     background: yellow;
+}
+
+.close {
+    visibility: hidden;
 }
 
 .spacer {
@@ -48,6 +78,14 @@
     color: white;
     text-align: center;
     padding-right: 10px;
+}
+
+button {
+    background: none;
+    color: inherit;
+    border: none;
+    font: inherit;
+    outline: inherit;
 }
 </style>
 

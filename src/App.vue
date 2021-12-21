@@ -1,8 +1,20 @@
 <template>
 <div id="app">
-    <div class="screen" id="screen" style="position: relative; z-index: 100;">
-        <div v-for="window in windows" :key="window.key">
-            <component v-bind:is="window.windowId" :id="window.windowId" :style="{position: window.position, left: window.positionX, top: window.positionY}" v-if="windowCheck(window.windowId)"></component>
+    <div 
+        class="screen" 
+        id="screen" 
+    >
+        <div 
+            v-for="window in windows" 
+            :key="window.key"
+        >
+            <component 
+                :is="window.windowId" 
+                :id="window.windowId" 
+                :style="{position: window.position, left: window.positionX, top: window.positionY}" 
+                v-if="windowCheck(window.windowId)"
+            >
+            </component>
         </div> 
         <app-grid></app-grid>
     </div>
@@ -82,23 +94,6 @@ html {
     overflow: hidden;
 }
 
-.square {
-    width: 50px;
-    height: 50px;
-    background-color: #000;
-    border-radius: 12px;
-    margin: 20px;
-    font-size: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.square:hover {
-    cursor: pointer;
-}
-
 #app {
     font-family: 'Courier New', Courier, monospace;
     font-weight: 600;
@@ -113,6 +108,8 @@ html {
 
 .screen {
     width: 100%;
+    position: relative; 
+    z-index: 100;
 }
 
 .fullscreen {
