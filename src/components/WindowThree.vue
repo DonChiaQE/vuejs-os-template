@@ -1,7 +1,7 @@
 <template>
 <interact draggable :dragOption="dragOption" resizable :resizeOption="resizeOption" class="resize-drag" :style="style" @dragmove="dragmove" @resizemove="resizemove" @click.native="setActiveWindow" :class="{ fullscreen: this.WindowFullscreen, minimize: $store.getters.getWindowById(ComponentName).windowState=='minimize'}">
     <div class="top-bar" id="top-bar" v-on:dblclick="toggleWindowSize">
-        <h3 class="window-name">Window Two</h3>
+        <h3 class="window-name">Window Three</h3>
         <div class="triple-button">
             <div class="expand_button button" @click="toggleWindowSize"></div>
             <div class="minimize_button button" @click="minimizeWindow"></div>
@@ -137,7 +137,7 @@
 <script>
 import interact from "interactjs";
 export default {
-    name: "WindowTwo", // VERY IMPORTANT TO NAME YOUR COMPONENT <--
+    name: "WindowThree", // VERY IMPORTANT TO NAME YOUR COMPONENT <--
     data: function () {
         return {
             // name

@@ -1,6 +1,5 @@
 <template>
 <div class="navbar-container">
-    <!-- <div class="icon" :style="{'background-color':this.windowIcon}"></div> -->
     <div v-for="window in windows" :key="window.key">
         <div v-if="window.windowState=='open'" v-on:click="openWindow(window.windowId)" class="icon open">{{window.displayName}}</div>
         <div v-if="window.windowState=='minimize'" v-on:click="openWindow(window.windowId)" class="icon minimize">{{window.displayName}}</div>
@@ -15,7 +14,7 @@
 .navbar-container {
     width: 100%;
     height: 50px;
-    background-color: #BEDBFE;
+    background-color: #0073ff;
     z-index: 100;
     display: flex;
     flex-direction: row;
@@ -23,6 +22,7 @@
 }
 
 .icon {
+    color: white;
     display: flex;
     align-items: center;
     padding-right: 1rem;
@@ -45,7 +45,7 @@
 
 .label {
     font-weight: bold;
-    color: #000;
+    color: white;
     text-align: center;
     padding-right: 10px;
 }

@@ -9,18 +9,16 @@
 
 <style scoped>
 .grid-container {
-    height: calc(var(--vh, 1vh) * 100 - 50);
+    height: calc(var(--vh, 1vh) * 100 - 60px);
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    width: 0;
+    width: 0; 
     margin-top: 10px;
-    margin-bottom: 10px;
-    /* compacts elements?? a tad too hacky */
 }
 
 .icon {
-    color: white;
+    color: black;
     display: flex;
     flex-direction: column;
     margin: 0.5rem;
@@ -39,6 +37,7 @@
 
 .icon:focus .icon-text {
     background: rgb(0, 0, 118);
+    color: white;
 }
 
 .icon:focus .border {
@@ -61,6 +60,7 @@ button {
 
 <script>
 export default {
+    name: 'AppGrid',
     data: function () {
         return {
             windows: this.$store.getters.getWindows

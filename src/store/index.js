@@ -29,6 +29,15 @@ export default new Vuex.Store({
         positionX: '10vw',
         positionY: '10vh',
         iconImage: 'placeholder.png',
+      },
+      {
+        windowId: 'WindowThree', // this needs to match ID, name and file name
+        windowState: 'close',
+        displayName: 'Window Three',
+        position: 'absolute',
+        positionX: '12vw',
+        positionY: '12vh',
+        iconImage: 'placeholder.png',
       }
       // register your new windows here
     ]

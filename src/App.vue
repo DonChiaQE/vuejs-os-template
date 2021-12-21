@@ -14,6 +14,7 @@
 import Navbar from './components/Navbar.vue'
 import WindowOne from './components/WindowOne.vue'
 import WindowTwo from './components/WindowTwo.vue'
+import WindowThree from './components/WindowThree.vue'
 import AppGrid from './components/AppGrid.vue'
 export default {
     name: 'App',
@@ -25,6 +26,7 @@ export default {
     components: {
         WindowOne,
         WindowTwo,
+        WindowThree,
         Navbar,
         AppGrid
     },
@@ -125,9 +127,26 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background: #405CB1;
     background-size: 20px 20px;
-    background-image: linear-gradient(to right, rgb(154, 190, 255, 0.2) 1px, transparent 1px), linear-gradient(to bottom, rgb(154, 190, 255, 0.2) 1px, transparent 1px);
+    background:
+        linear-gradient(-90deg, rgba(85, 150, 229, 0.15) 1px, transparent 1px),
+        linear-gradient(rgba(85, 150, 229, 0.15) 1px, transparent 1px), 
+        linear-gradient(-90deg, rgba(85, 150, 229, 0.1) 1px, transparent 1px),
+        linear-gradient(rgba(85, 150, 229, 0.1) 1px, transparent 1px),
+        linear-gradient(transparent 3px, rgb(253, 253, 253) 3px, rgb(253, 253, 253) 78px, transparent 78px),
+        linear-gradient(-90deg, rgb(141, 202, 255) 1px, transparent 1px),
+        linear-gradient(-90deg, transparent 3px, rgb(253, 253, 253) 3px, rgb(253, 253, 253) 78px, transparent 78px),
+        linear-gradient(rgb(141, 202, 255) 1px, transparent 1px),
+        rgb(253, 253, 253);
+    background-size:
+        4px 4px,
+        4px 4px,
+        80px 80px,
+        80px 80px,
+        80px 80px,
+        80px 80px,
+        80px 80px,
+        80px 80px;
 }
 
 .bar-container {
