@@ -12,6 +12,7 @@
 - [x] Window Minimize
 - [x] Navbar
 - [x] App Grid
+- [ ] Improve experience on mobile
 - [ ] Simplifying Process of Registering Components
 - [ ] Basic styling for Mac variant
 - [ ] Basic Styling for Windows variant
