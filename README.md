@@ -10,9 +10,9 @@
 - [x] Window Fullscreen
 - [x] Window Close
 - [x] Window Minimize
-- [ ] Simplifying Process of Registering Components
 - [x] Navbar
-- [ ] App Grid
+- [x] App Grid
+- [ ] Simplifying Process of Registering Components
 - [ ] Basic styling for Mac variant
 - [ ] Basic Styling for Windows variant
 - [ ] Basic Styling for Linux variant
