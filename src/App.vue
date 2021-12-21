@@ -2,14 +2,9 @@
 <div id="app">
     <div class="screen" id="screen" style="position: relative; z-index: 100;">
         <div v-for="window in windows" :key="window.key">
-            <div v-on:click="openWindow(window.windowId)" style="z-index: 1000; color: white;" class="square">{{window.displayName}}</div>
-        </div>  
-        <div v-for="window in windows" :key="window.key">
             <component v-bind:is="window.windowId" :id="window.windowId" :style="{position: window.position, left: window.positionX, top: window.positionY}" v-if="windowCheck(window.windowId)"></component>
-        </div>
-        <!-- Todo:
-        - Extract v-if into a function 
-        - Create separate app grid -->
+        </div> 
+        <app-grid></app-grid>
     </div>
     <navbar />
 </div>
@@ -19,6 +14,7 @@
 import Navbar from './components/Navbar.vue'
 import WindowOne from './components/WindowOne.vue'
 import WindowTwo from './components/WindowTwo.vue'
+import AppGrid from './components/AppGrid.vue'
 export default {
     name: 'App',
     data: function () {
@@ -30,6 +26,7 @@ export default {
         WindowOne,
         WindowTwo,
         Navbar,
+        AppGrid
     },
     computed: {
         style() {

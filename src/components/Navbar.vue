@@ -7,7 +7,7 @@
         <div v-if="window.windowState=='close'" v-on:click="openWindow(window.windowId)" style="display: none;" class="icon">{{window.displayName}}</div>
     </div>
     <div class="spacer"></div>
-    <div class="label">Active Window: {{$store.getters.getActiveWindow}}</div>
+    <p class="label">Active Window: {{$store.getters.getActiveWindow}}</p>
 </div>
 </template>
 
@@ -71,9 +71,6 @@ export default {
     },
     created: function () {
         this.$parent.$on('windowModify', this.changeIconColor);
-    },
-    mounted () {
-        
     }
 }
 </script>

@@ -147,7 +147,7 @@ export default {
                     bottom: true,
                     right: true
                 },
-                margin: 10,
+                margin: 8,
                 modifiers: [
                     // interact.modifiers.restrictRect({
                     //     restriction: "body",

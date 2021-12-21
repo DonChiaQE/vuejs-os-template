@@ -104,7 +104,6 @@
     flex-direction: row;
     border-radius: 8px 8px 0px 0px;
     padding: 4px;
-    z-index: 5000;
 }
 
 .top-bar:hover {
@@ -148,7 +147,7 @@ export default {
                     bottom: true,
                     right: true
                 },
-                margin: 10,
+                margin: 8,
                 modifiers: [
                     // interact.modifiers.restrictRect({
                     //     restriction: "parent",

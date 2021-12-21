@@ -1,0 +1,79 @@
+<template>
+<div class="grid-container">
+    <button class="icon" v-for="window in windows" :key="window.key" v-on:dblclick="openWindow(window.windowId)">
+        <img class="icon-image" :src="require('../assets/Icons/' + window.iconImage)" />
+        <p class="icon-text">{{window.displayName}}</p>
+    </button>
+</div>
+</template>
+
+<style scoped>
+.grid-container {
+    height: calc(var(--vh, 1vh) * 100 - 50);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    /* compacts elements?? a tad too hacky */
+}
+
+.icon {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem;
+    align-items: center;
+    text-align: center;
+}
+
+.icon-image {
+    width: 50px;
+    height: 50px;
+}
+
+.icon:focus .icon-image {
+    filter: grayscale(100%) brightness(30%) sepia(100%) hue-rotate(-180deg) saturate(400%) contrast(0.9);
+}
+
+.icon:focus .icon-text {
+    background: rgb(0, 0, 118);
+}
+
+.icon:focus .border {
+    border: rgb(255, 255, 148) dotted 1px;
+}
+
+p {
+    margin: 1vw 0 0 0;
+    padding: 0 0 0 0;
+}
+
+button {
+    background: none;
+    color: inherit;
+    border: none;
+    font: inherit;
+    outline: inherit;
+}
+</style>
+
+<script>
+export default {
+    data: function () {
+        return {
+            windows: this.$store.getters.getWindows
+        }
+    },
+    methods: {
+        openWindow(windowId) {
+            const payload = {
+                'windowState': 'open',
+                'windowID': windowId
+            }
+            this.$store.commit('setWindowState', payload)
+        },
+    }
+}
+</script>

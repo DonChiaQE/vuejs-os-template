@@ -19,6 +19,7 @@ export default new Vuex.Store({
         position: 'absolute',
         positionX: '15vw',
         positionY: '15vh',
+        iconImage: 'placeholder.png',
       },
       {
         windowId: 'WindowTwo', // this needs to match ID, name and file name
@@ -27,6 +28,7 @@ export default new Vuex.Store({
         position: 'absolute',
         positionX: '10vw',
         positionY: '10vh',
+        iconImage: 'placeholder.png',
       }
       // register your new windows here
     ]
