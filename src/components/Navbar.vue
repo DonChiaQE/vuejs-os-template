@@ -66,7 +66,9 @@
 }
 
 .close {
-    visibility: hidden;
+    /* visibility: hidden; */
+    /* secondary objective: make use of array and push active windows on it */
+    display: none;
 }
 
 .spacer {
@@ -95,7 +97,9 @@ export default {
     data: function() {
         return {
             windows: this.$store.getters.getWindows,
-            iconColor: 'red'
+            iconColor: 'red',
+            // activeWindows: []
+            // Secondary Objective: Use array to deal with active windows
         }
     },
     methods: {

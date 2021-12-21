@@ -31,9 +31,9 @@ export default new Vuex.Store({
         iconImage: 'placeholder.png',
       },
       {
-        windowId: 'WindowThree', // this needs to match ID, name and file name
+        windowId: 'DateTime', // this needs to match ID, name and file name
         windowState: 'close',
-        displayName: 'Window Three',
+        displayName: 'Date Time',
         position: 'absolute',
         positionX: '12vw',
         positionY: '12vh',

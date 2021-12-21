@@ -26,7 +26,7 @@
 import Navbar from './components/Navbar.vue'
 import WindowOne from './components/WindowOne.vue'
 import WindowTwo from './components/WindowTwo.vue'
-import WindowThree from './components/WindowThree.vue'
+import DateTime from './components/DateTime.vue'
 import AppGrid from './components/AppGrid.vue'
 export default {
     name: 'App',
@@ -38,7 +38,7 @@ export default {
     components: {
         WindowOne,
         WindowTwo,
-        WindowThree,
+        DateTime,
         Navbar,
         AppGrid
     },
@@ -144,23 +144,5 @@ body {
         80px 80px,
         80px 80px,
         80px 80px;
-}
-
-.bar-container {
-    width: auto;
-    height: 70px;
-    background-color: rgba(255, 255, 255, .15);
-    border: 1px solid rgb(255, 255, 255, 0.2);
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
-.wrapper {
-    display: flex;
-    justify-content: center;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
 }
 </style>
