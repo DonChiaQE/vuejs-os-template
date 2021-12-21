@@ -1,5 +1,6 @@
 # [OS Website Template for Vue.js](https://thirsty-wright-cae0f8.netlify.app/)
-![Screenshot 2021-12-15 at 00-55-23 os-template](https://user-images.githubusercontent.com/24926784/146043459-86f131c3-6b26-40fd-8e33-483a4bfe6622.png)
+
+<img width="1440" alt="Screenshot 2021-12-21 at 5 16 53 PM" src="https://user-images.githubusercontent.com/24926784/146904065-05513a29-261b-4f35-b952-5bde1599a35d.png"/>
 
 # Development
 - [x] Basic Windows Logic
