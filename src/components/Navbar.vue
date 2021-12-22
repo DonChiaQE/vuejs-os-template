@@ -1,7 +1,7 @@
 <template>
 <nav class="navbar-container">
     <div 
-        v-for="window in windows" 
+        v-for="window in this.activeWindows" 
         :key="window.key"
     >
         <button 
@@ -96,10 +96,7 @@ export default {
     name: 'Navbar',
     data: function() {
         return {
-            windows: this.$store.getters.getWindows,
-            iconColor: 'red',
-            // activeWindows: []
-            // Secondary Objective: Use array to deal with active windows
+            activeWindows: this.$store.getters.getActiveWindows,
         }
     },
     methods: {
@@ -110,9 +107,6 @@ export default {
             }
             this.$store.commit('setWindowState', payload)
         },
-    },
-    created: function () {
-        this.$parent.$on('windowModify', this.changeIconColor);
     }
 }
 </script>

@@ -1,19 +1,13 @@
 <template>
 <nav class="grid-container">
-    <button 
-        class="icon" 
-        v-for="window in windows" 
-        :key="window.key" v-on:dblclick="openWindow(window.windowId)"
-    >
-        <img 
-            class="icon-image" 
-            :src="require('../assets/icons/' + window.iconImage)"
-            alt="icon placeholder" 
-        />
-        <p class="icon-text">
-            {{window.displayName}}
-        </p>
-    </button>
+    <li v-for="window in windows" :key="window.key" v-on:dblclick="openWindow(window.windowId)">
+        <button class="icon">
+            <img class="icon-image" :src="require('../assets/icons/' + window.iconImage)" :alt="window.altText" />
+            <p class="icon-text">
+                {{window.displayName}}
+            </p>
+        </button>
+    </li>
 </nav>
 </template>
 
@@ -23,7 +17,7 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    width: 0; 
+    width: 0;
     margin-top: 10px;
 }
 
@@ -31,7 +25,7 @@
     color: black;
     display: flex;
     flex-direction: column;
-    margin: 0.5rem;
+    margin: 1rem;
     align-items: center;
     text-align: center;
 }
@@ -57,6 +51,12 @@
 p {
     margin: 1vw 0 0 0;
     padding: 0 0 0 0;
+}
+
+li {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
 }
 
 button {

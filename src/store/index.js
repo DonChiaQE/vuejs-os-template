@@ -8,6 +8,9 @@ export default new Vuex.Store({
     // Active Window State
     activeWindow: 'nil', // Name of first window you want
 
+    // Active Windows Array State
+    activeWindows: [],
+
     // Z-index counter
     zIndex: 2, // Z-index has to be incremented
 
@@ -20,6 +23,9 @@ export default new Vuex.Store({
         positionX: '15vw',
         positionY: '15vh',
         iconImage: 'placeholder.png',
+        altText: 'Placeholder Icon', 
+        // todo: store original position after expanding
+        // maybe use position x and position y to store
       },
       {
         windowId: 'WindowTwo', // this needs to match ID, name and file name
@@ -29,6 +35,7 @@ export default new Vuex.Store({
         positionX: '10vw',
         positionY: '10vh',
         iconImage: 'placeholder.png',
+        altText: 'Placeholder Icon', 
       },
       {
         windowId: 'DateTime', // this needs to match ID, name and file name
@@ -38,6 +45,7 @@ export default new Vuex.Store({
         positionX: '12vw',
         positionY: '12vh',
         iconImage: 'placeholder.png',
+        altText: 'Placeholder Icon', 
       }
       // register your new windows here
     ]
@@ -45,12 +53,16 @@ export default new Vuex.Store({
   },
   mutations: {
     // Active Window Mutator
-    async setActiveWindow(state, window) {
+    setActiveWindow(state, window) {
       state.activeWindow = window
     },
 
+    pushActiveWindow(state, window) {
+      state.activeWindows.push(window)
+    },
+
     // Z-index increment function
-    async zIndexIncrement(state, windowID) {
+    zIndexIncrement(state, windowID) {
       state.zIndex += 1
       document.getElementById(windowID).style.zIndex = state.zIndex
     },
@@ -61,6 +73,10 @@ export default new Vuex.Store({
         return state.windows.find(windows => windows.windowId === payload.windowID);
       }
       const window = getArrItem()
+      var preventAppendingOpenWindow = false
+      if (window.windowState == 'open') {
+        preventAppendingOpenWindow = true
+      }
       if (payload.windowState == 'open') {
         window.windowState = payload.windowState
         setTimeout(() => {  
@@ -69,6 +85,11 @@ export default new Vuex.Store({
         setTimeout(() => {  
           this.commit("setActiveWindow", payload.windowID)
         }, 1);
+        if (preventAppendingOpenWindow == false) {
+          setTimeout(() => {  
+            this.commit("pushActiveWindow", window)
+          }, 1);
+        }
       } else if (payload.windowState == 'close') {
         window.windowState = payload.windowState
         this.commit("setActiveWindow", "nil") // This depends on the OS you're mimicking (Window -> nil, MacOS -> Finder)
@@ -94,6 +115,10 @@ export default new Vuex.Store({
 
     getWindows: (state) => {
       return state.windows
+    },
+
+    getActiveWindows(state) {
+      return state.activeWindows
     }
   }
 })

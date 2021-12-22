@@ -20,7 +20,6 @@
             <button class="expand_button button" @click="toggleWindowSize"></button>
             <button class="minimize_button button" @click="minimizeWindow"></button>
             <button class="close_button button" @click="closeWindow"></button>
-
         </div>
     </button>
     <div class="content">
