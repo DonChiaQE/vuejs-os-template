@@ -252,7 +252,7 @@ export default {
                 this.x = this.tempX
                 this.y = this.tempY
                 
-            } else if (this.WindowFullscreen == false) {
+            } else if (this.WindowFullscreen == false) { 
                 this.WindowFullscreen = true
                 const tempX = this.x
                 const tempY = this.y
