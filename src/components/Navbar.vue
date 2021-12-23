@@ -106,7 +106,7 @@ export default {
                 'windowID': windowId
             }
             this.$store.commit('setWindowState', payload)
-        },
+        },      
     }
 }
 </script>

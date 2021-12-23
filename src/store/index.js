@@ -5,6 +5,9 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    // Height of Fullscreen Window
+    fullscreenWindowHeight: window.innerHeight - 50,
+
     // Active Window State
     activeWindow: 'nil', // Name of first window you want
 
@@ -24,8 +27,6 @@ export default new Vuex.Store({
         positionY: '15vh',
         iconImage: 'placeholder.png',
         altText: 'Placeholder Icon', 
-        // todo: store original position after expanding
-        // maybe use position x and position y to store
       },
       {
         windowId: 'WindowTwo', // this needs to match ID, name and file name
@@ -65,6 +66,10 @@ export default new Vuex.Store({
     zIndexIncrement(state, windowID) {
       state.zIndex += 1
       document.getElementById(windowID).style.zIndex = state.zIndex
+    },
+
+    setFullscreenWindowHeight(state, height) {
+      state.fullscreenWindowHeight = height
     },
 
     // Window State Mutator
@@ -119,6 +124,10 @@ export default new Vuex.Store({
 
     getActiveWindows(state) {
       return state.activeWindows
+    },
+
+    getFullscreenWindowHeight(state) {
+      return state.fullscreenWindowHeight
     }
   }
 })

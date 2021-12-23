@@ -20,7 +20,6 @@
             <button class="expand_button button" @click="toggleWindowSize"></button>
             <button class="minimize_button button" @click="minimizeWindow"></button>
             <button class="close_button button" @click="closeWindow"></button>
-
         </div>
     </button>
     <div class="content">
@@ -191,12 +190,6 @@ export default {
                     // })
                 ],
             },
-            positions: {
-                clientX: undefined,
-                clientY: undefined,
-                movementX: 0,
-                movementY: 0
-            },
             dragOption: {
                 modifiers: [
                     interact.modifiers.restrictRect({
@@ -209,6 +202,8 @@ export default {
             // values for interact.js transformation
             x: 0,
             y: 0,
+            tempX: 0,
+            tempY: 0,
             w: 400,
             h: 400,
 
@@ -220,7 +215,7 @@ export default {
                 height: `${this.h}px`,
                 width: `${this.w}px`,
                 transform: `translate(${this.x}px, ${this.y}px)`,
-                '--fullscreen': window.innerHeight - 40 + "px"
+                '--fullscreen': window.innerHeight - 50 + "px"
             };
         }
     },
@@ -252,13 +247,23 @@ export default {
         },
 
         toggleWindowSize() {
-            this.WindowFullscreen = !this.WindowFullscreen
-            this.x = 0
-            this.y = 0
+            if (this.WindowFullscreen == true) {
+                this.WindowFullscreen = false
+                this.x = this.tempX
+                this.y = this.tempY
+                
+            } else if (this.WindowFullscreen == false) {
+                this.WindowFullscreen = true
+                const tempX = this.x
+                const tempY = this.y
+                this.tempX = tempX
+                this.tempY = tempY
+                this.x = 0
+                this.y = 0
+            }
         },
 
         setActiveWindow() {
-            console.log("set")
             this.$store.commit('zIndexIncrement', this.ComponentName)
             this.$store.commit('setActiveWindow', this.ComponentName)
         },

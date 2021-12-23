@@ -4,7 +4,7 @@
         class="screen" 
         id="screen" 
     >
-        <div 
+        <span 
             v-for="window in windows" 
             :key="window.key"
         >
@@ -15,10 +15,10 @@
                 v-if="windowCheck(window.windowId)"
             >
             </component>
-        </div> 
+        </span> 
         <app-grid></app-grid>
     </div>
-    <navbar />
+    <navbar id="navbar" ref="navbar"/>
 </div>
 </template>
 
@@ -51,7 +51,7 @@ export default {
     },
     mounted() {
         // Ensures windows can move freely
-        document.getElementById('screen').style.height = window.innerHeight - 40 + "px";
+        document.getElementById('screen').style.height = window.innerHeight - 50 + "px";
         // We listen to the resize event
         window.addEventListener('resize', () => {
             // We execute the same script as before
@@ -67,7 +67,6 @@ export default {
         // reset the height whenever the window's resized
         window.addEventListener("resize", resetHeight);
         // called to initially set the height.
-        resetHeight();
     },
     methods: {
         openWindow(windowId) {
@@ -84,8 +83,7 @@ export default {
                 return true
             }
         }
-        // we need methods to interact with private states in encapsulated components
-    }
+    },
 }
 </script>
 
