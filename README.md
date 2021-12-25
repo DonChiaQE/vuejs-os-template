@@ -13,12 +13,20 @@
 - [x] Window Minimize
 - [x] Navbar
 - [x] App Grid
+- [x] Basic Accessibility (Sematic HTML/Alt Images etc.)
+- [ ] Advanced Accessibility (Keyboard Controls/ARIA)
 - [ ] Improve experience on mobile
 - [ ] Simplifying Process of Registering Components
 - [ ] Basic styling for Mac variant
 - [ ] Basic Styling for Windows variant
 - [ ] Basic Styling for Linux variant
-- [ ] Accessibility
+
+# To-do
+- [ ] Mobile Tap Gestures
+- [ ] Detect Navbar Height Automatically
+- [ ] Clean Up CSS Code
+- [ ] Clean Up Vuex
+- [ ] Document Code
 
 # Project Overview
 👋 Hello Stranger, if you've somehow stumbled across this repository, you're probably early. Here are some instructions for setting up and using the template.
