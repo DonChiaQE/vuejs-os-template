@@ -1,7 +1,7 @@
 <template>
 <nav class="grid-container">
-    <li v-for="window in windows" :key="window.key" v-on:dblclick="openWindow(window.windowId)">
-        <button class="icon">
+    <li v-for="window in windows" :key="window.key">
+        <button class="icon" @touchstart="openWindow(window.windowId)" @dblclick="openWindow(window.windowId)">
             <img class="icon-image" :src="require('../assets/icons/' + window.iconImage)" :alt="window.altText" />
             <p class="icon-text">
                 {{window.displayName}}

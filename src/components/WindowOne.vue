@@ -1,13 +1,13 @@
 <template>
 <interact draggable :dragOption="dragOption" resizable :resizeOption="resizeOption" class="resize-drag" :style="style" @dragmove="dragmove" @resizemove="resizemove" @click.native="setActiveWindow" :class="{ fullscreen: this.WindowFullscreen, minimize: $store.getters.getWindowById(ComponentName).windowState=='minimize'}">
-    <div class="top-bar" id="top-bar" v-on:dblclick="toggleWindowSize">
+    <button class="top-bar" id="top-bar" @dblclick="toggleWindowSize">
         <h3 class="window-name">Window One</h3>
         <div class="triple-button">
             <button class="expand-button button" @click="toggleWindowSize"></button>
             <button class="minimize-button button" @click="minimizeWindow"></button>
             <button class="close-button button" @click="closeWindow"></button>
         </div>
-    </div>
+    </button>
     <div class="content">
         <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ut leo rutrum, pulvinar dui eu, tristique ante. Suspendisse ultrices fringilla risus, et tempus tortor varius ac. Donec at mauris vitae purus viverra malesuada. Nam scelerisque eu nunc quis pretium. Aliquam ac arcu dictum, interdum nunc non, porttitor ligula. Donec porta risus id mollis vulputate. Integer rhoncus arcu metus, vel ultrices dolor fermentum ac. Donec est erat, pulvinar a urna vel, varius euismod sapien. Sed convallis at nunc rhoncus imperdiet. Fusce vitae eleifend lorem, eu feugiat mauris. Donec quis magna risus.
