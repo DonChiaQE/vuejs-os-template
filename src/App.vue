@@ -40,7 +40,7 @@ export default {
         WindowTwo,
         DateTime,
         Navbar,
-        AppGrid
+        AppGrid,
     },
     computed: {
         style() {
@@ -78,7 +78,6 @@ export default {
         },
 
         windowCheck(windowId) {
-            console.log(windowId)
             if (this.$store.getters.getWindowById(windowId).windowState=='open') {
                 return true
             }
@@ -88,6 +87,8 @@ export default {
 </script>
 
 <style>
+@import './assets/css/normalize.css';
+
 html {
     overflow: hidden;
 }

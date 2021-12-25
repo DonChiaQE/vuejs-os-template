@@ -1,7 +1,9 @@
 <template>
 <interact draggable :dragOption="dragOption" resizable :resizeOption="resizeOption" class="resize-drag" :style="style" @dragmove="dragmove" @resizemove="resizemove" @click.native="setActiveWindow" :class="{ fullscreen: this.WindowFullscreen, minimize: $store.getters.getWindowById(ComponentName).windowState=='minimize'}">
     <button class="top-bar" id="top-bar" v-on:dblclick="toggleWindowSize">
-        <h3 class="window-name">Date Time</h3>
+        <slot name="title" class="window-name">
+            <!-- slot for window title -->
+        </slot>
         <div class="triple-button">
             <button class="expand_button button" @click="toggleWindowSize"></button>
             <button class="minimize_button button" @click="minimizeWindow"></button>
@@ -9,9 +11,9 @@
         </div>
     </button>
     <div class="content">
-        <time>
-            {{time}} {{date}}
-        </time>
+        <slot name="content">
+            <!-- slot for content -->
+        </slot>
     </div>
 </interact>
 </template>
@@ -130,9 +132,14 @@ p {
 
 <script>
 import interact from "interactjs";
-import moment from 'moment'
 export default {
-    name: "DateTime", // VERY IMPORTANT TO NAME YOUR COMPONENT <--
+    name: 'WindowTemplate', // VERY IMPORTANT TO NAME YOUR COMPONENT <--
+    props: {
+        windowID: {
+            type: String,
+            required: true
+        },
+    },
     data: function () {
         return {
             // name
@@ -152,7 +159,7 @@ export default {
                 margin: 8,
                 modifiers: [
                     // interact.modifiers.restrictRect({
-                    //     restriction: '#screen',
+                    //     restriction: '#screen'
                     // })
                 ],
             },
@@ -173,18 +180,7 @@ export default {
             w: 400,
             h: 400,
 
-            // date time for moment.js
-            time: '',
-            date: ''
         }
-    },
-    beforeMount() {
-        setInterval(() => {
-            this.time = moment().format('hh:mm A')
-        }, 1000)
-        setInterval(() => {
-            this.date = moment().format('ddd DD MMMM')
-        }, 1000)
     },
     computed: {
         style() {
@@ -192,7 +188,7 @@ export default {
                 height: `${this.h}px`,
                 width: `${this.w}px`,
                 transform: `translate(${this.x}px, ${this.y}px)`,
-                '--fullscreen': window.innerHeight - 40 + "px"
+                '--fullscreen': window.innerHeight - 50 + "px"
             };
         }
     },
@@ -241,7 +237,6 @@ export default {
         },
 
         setActiveWindow() {
-            console.log("set")
             this.$store.commit('zIndexIncrement', this.ComponentName)
             this.$store.commit('setActiveWindow', this.ComponentName)
         },
@@ -261,9 +256,6 @@ export default {
             this.x += event.deltaRect.left;
             this.y += event.deltaRect.top;
         }
-    },
-    created() {
-        console.log(this.time)
     }
 }
 </script>
