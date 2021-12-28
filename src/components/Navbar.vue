@@ -32,6 +32,10 @@
 </template>
 
 <style scoped>
+/*-------------------------------------------*\
+    Container
+\*-------------------------------------------*/
+
 .navbar-container {
     width: 100%;
     height: 50px;
@@ -41,6 +45,10 @@
     flex-direction: row;
     align-items: center;
 }
+
+/*-------------------------------------------*\
+    Icons
+\*-------------------------------------------*/
 
 .icon {
     color: white;
@@ -66,10 +74,12 @@
 }
 
 .close {
-    /* visibility: hidden; */
-    /* secondary objective: make use of array and push active windows on it */
     display: none;
 }
+
+/*-------------------------------------------*\
+    Utilities
+\*-------------------------------------------*/
 
 .spacer {
     flex-grow: 1;
@@ -81,6 +91,10 @@
     text-align: center;
     padding-right: 10px;
 }
+
+/*-------------------------------------------*\
+    CSS Normalisation 
+\*-------------------------------------------*/
 
 button {
     background: none;

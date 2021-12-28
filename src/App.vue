@@ -50,23 +50,21 @@ export default {
         }
     },
     mounted() {
-        // Ensures windows can move freely
+        /*------------------------------------------------*\
+            This fixes height problems for mobile devices 
+        \*------------------------------------------------*/
+
         document.getElementById('screen').style.height = window.innerHeight - 50 + "px";
-        // We listen to the resize event
         window.addEventListener('resize', () => {
-            // We execute the same script as before
             let vh = window.innerHeight * 0.01;
             document.documentElement.style.setProperty('--vh', `${vh}px`);
         });
 
         function resetHeight() {
-            // reset the body height to that of the inner browser
             document.body.style.height = window.innerHeight + "px";
             document.html.style.height = window.innerHeight + "px";
         }
-        // reset the height whenever the window's resized
         window.addEventListener("resize", resetHeight);
-        // called to initially set the height.
     },
     methods: {
         openWindow(windowId) {
@@ -88,6 +86,9 @@ export default {
 
 <style>
 @import './assets/css/normalize.css';
+/*-------------------------------------------*\
+    CSS Normalisation 
+\*-------------------------------------------*/
 
 html {
     overflow: hidden;
@@ -102,21 +103,12 @@ html {
     width: 100%;
     height: calc(var(--vh, 1vh) * 100);
     flex-direction: column;
-    overflow: hidden;
 }
 
 .screen {
     width: 100%;
     position: relative; 
-    z-index: 100;
-}
-
-.fullscreen {
-    left: 0 !important;
-    position: relative;
-    display: block;
-    top: 0 !important;
-    right: 0 !important;
+    z-index: 999;
 }
 
 body {
@@ -143,5 +135,17 @@ body {
         80px 80px,
         80px 80px,
         80px 80px;
+}
+
+/*-------------------------------------------*\
+    Fullscreen
+\*-------------------------------------------*/
+
+.fullscreen {
+    left: 0 !important;
+    position: relative;
+    display: block;
+    top: 0 !important;
+    right: 0 !important;
 }
 </style>

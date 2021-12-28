@@ -1,11 +1,11 @@
 <template>
 <interact draggable :dragOption="dragOption" resizable :resizeOption="resizeOption" class="resize-drag" :style="style" @dragmove="dragmove" @resizemove="resizemove" @click.native="setActiveWindow" :class="{ fullscreen: this.WindowFullscreen, minimize: $store.getters.getWindowById(ComponentName).windowState=='minimize'}">
-    <button class="top-bar" id="top-bar" v-on:dblclick="toggleWindowSize">
-        <h3 class="window-name">Window Two</h3>
+    <button class="top-bar" id="top-bar" @dblclick="toggleWindowSize">
+        <h3 class="window-name">{{this.window.displayName}}</h3>
         <div class="triple-button">
-            <button class="expand_button button" @click="toggleWindowSize"></button>
-            <button class="minimize_button button" @click="minimizeWindow"></button>
-            <button class="close_button button" @click="closeWindow"></button>
+            <button class="expand-button button" @click="toggleWindowSize"></button>
+            <button class="minimize-button button" @click="minimizeWindow"></button>
+            <button class="close-button button" @click="closeWindow"></button>
         </div>
     </button>
     <div class="content">
@@ -35,7 +35,11 @@
 </template>
 
 <style scoped>
-.minimize_button {
+/*-------------------------------------------*\
+    Buttons 
+\*-------------------------------------------*/
+
+.minimize-button {
     width: 12px;
     height: 12px;
     background-color: yellow;
@@ -43,7 +47,7 @@
     border-radius: 50%;
 }
 
-.expand_button {
+.expand-button {
     width: 12px;
     height: 12px;
     background-color: green;
@@ -51,7 +55,7 @@
     border-radius: 50%;
 }
 
-.close_button {
+.close-button {
     width: 12px;
     height: 12px;
     background-color: red;
@@ -59,22 +63,48 @@
     border-radius: 50%;
 }
 
+.triple-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .button:hover {
     cursor: pointer;
 }
 
-button {
-    background: none;
-    color: inherit;
-    border: none;
-    font: inherit;
-    outline: inherit;
+/*-------------------------------------------*\
+    Top Bar
+\*-------------------------------------------*/
+
+.top-bar {
+    display: flex;
+    flex: 0 1 auto;
+    width: auto;
+    background: #4C9CFF;
+    z-index: 10;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    border-radius: 8px 8px 0px 0px;
+    padding: 4px;
 }
 
-p {
-    margin: 0 0 0 0;
-    padding: 0 0 0 0;
+.top-bar:hover {
+    cursor: default;
 }
+
+.window-name {
+    color: black;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0 0 0 3px;
+}
+
+/*-------------------------------------------*\
+    Windows/Display
+\*-------------------------------------------*/
 
 .minimize {
     display: none;
@@ -104,37 +134,6 @@ p {
     padding: 0;
 }
 
-.top-bar {
-    display: flex;
-    flex: 0 1 auto;
-    width: auto;
-    background: #4C9CFF;
-    z-index: 10;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: row;
-    border-radius: 8px 8px 0px 0px;
-    padding: 4px;
-}
-
-.top-bar:hover {
-    cursor: default;
-}
-
-.window-name {
-    color: black;
-    display: flex;
-    align-items: center;
-    padding: 0;
-    margin: 0 0 0 3px;
-}
-
-.triple-button {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
 .content {
     overflow: scroll;
     flex: 1 1 auto;
@@ -144,6 +143,23 @@ p {
     padding-top: 5%;
     padding-bottom: 5%;
 }
+
+/*-------------------------------------------*\
+    CSS Normalisation 
+\*-------------------------------------------*/
+
+button {
+    background: none;
+    color: inherit;
+    border: none;
+    font: inherit;
+    outline: inherit;
+}
+
+p {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
 </style>
 
 <script>
@@ -152,11 +168,14 @@ export default {
     name: "WindowTwo", // VERY IMPORTANT TO NAME YOUR COMPONENT <--
     data: function () {
         return {
-            // name
+            // ID Name of window (important)
             ComponentName: this.$options.name,
 
-            // states
-            WindowFullscreen: false, // false, true
+            // window fullscreen state
+            WindowFullscreen: false, // false, true,
+
+            // window
+            Window: {},
 
             // InteractJS states and modifiers
             resizeOption: {
@@ -201,6 +220,9 @@ export default {
                 '--fullscreen': window.innerHeight - 50 + "px"
             };
         }
+    },
+    created() {
+        this.window = this.$store.getters.getWindowById(this.ComponentName)
     },
     methods: {
         // functions to interact with window state
