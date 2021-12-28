@@ -7,21 +7,21 @@
         <button 
             v-if="window.windowState=='open'" 
             v-on:click="openWindow(window.windowId)" 
-            class="icon open"
+            class="navbar-item open"
         >
         {{window.displayName}}
         </button>
         <button 
             v-if="window.windowState=='minimize'" 
             v-on:click="openWindow(window.windowId)" 
-            class="icon minimize"
+            class="navbar-item minimize"
         >
         {{window.displayName}}
         </button>
         <button 
             v-if="window.windowState=='close'" 
             v-on:click="openWindow(window.windowId)" 
-            class="icon close"
+            class="navbar-item close"
         >
         {{window.displayName}}
         </button>
@@ -50,7 +50,7 @@
     Icons
 \*-------------------------------------------*/
 
-.icon {
+.navbar-item {
     color: white;
     display: flex;
     align-items: center;
@@ -61,7 +61,7 @@
     text-align: center;
 }
 
-.icon:hover {
+.navbar-item:hover {
     cursor: pointer;
 }
 

@@ -1,0 +1,39 @@
+html {
+    overflow: hidden;
+}
+
+#app {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: flex;
+    width: 100%;
+    height: calc(var(--vh, 1vh) * 100);
+    flex-direction: column;
+}
+
+.screen {
+    width: 100%;
+    position: relative; 
+    z-index: 999;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #018281;
+}
+
+/*-------------------------------------------*\
+    Fullscreen
+\*-------------------------------------------*/
+
+.fullscreen {
+    left: 0 !important;
+    position: relative;
+    display: block;
+    top: 0 !important;
+    right: 0 !important;
+}

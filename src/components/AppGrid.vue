@@ -3,81 +3,18 @@
     <li v-for="window in windows" :key="window.key">
         <button class="icon" @touchstart="openWindow(window.windowId)" @dblclick="openWindow(window.windowId)">
             <img class="icon-image" :src="require('../assets/icons/' + window.iconImage)" :alt="window.altText" />
+            <div class="border">
             <p class="icon-text">
                 {{window.displayName}}
             </p>
+            </div>
         </button>
     </li>
 </nav>
 </template>
 
 <style scoped>
-/*-------------------------------------------*\
-    Grid 
-\*-------------------------------------------*/
 
-.grid-container {
-    height: calc(var(--vh, 1vh) * 100 - 60px);
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    width: 0;
-    margin-top: 10px;
-}
-
-/*-------------------------------------------*\
-    Icons
-\*-------------------------------------------*/
-
-.icon {
-    color: black;
-    display: flex;
-    flex-direction: column;
-    margin: 1rem;
-    align-items: center;
-    text-align: center;
-}
-
-.icon-image {
-    width: 50px;
-    height: 50px;
-}
-
-.icon:focus .icon-image {
-    filter: grayscale(100%) brightness(30%) sepia(100%) hue-rotate(-180deg) saturate(400%) contrast(0.9);
-}
-
-.icon:focus .icon-text {
-    background: rgb(0, 0, 118);
-    color: white;
-}
-
-.icon:focus .border {
-    border: rgb(255, 255, 148) dotted 1px;
-}
-
-/*-------------------------------------------*\
-    CSS Normalisation 
-\*-------------------------------------------*/
-
-p {
-    margin: 1vw 0 0 0;
-    padding: 0 0 0 0;
-}
-
-li {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-button {
-    background: none;
-    color: inherit;
-    border: none;
-    font: inherit;
-    outline: inherit;
-}
 </style>
 
 <script>

@@ -23,10 +23,14 @@
 </template>
 
 <script>
-import Navbar from './components/Navbar.vue'
-import WindowOne from './components/windows/WindowOne.vue'
-import WindowTwo from './components/windows/WindowTwo.vue'
-import DateTime from './components/windows/DateTime.vue'
+import Navbar from './components/blueprint/Navbar.vue'
+/*-----------------------------------------------------------*\
+    Use following snippet to import a windows themed navbar 
+\*-----------------------------------------------------------*/
+// import Navbar from './components/windows/Navbar.vue'
+import WindowOne from './components/views/WindowOne.vue'
+import WindowTwo from './components/views/WindowTwo.vue'
+import DateTime from './components/views/DateTime.vue'
 import AppGrid from './components/AppGrid.vue'
 export default {
     name: 'App',
@@ -45,7 +49,7 @@ export default {
     computed: {
         style() {
             return {
-                '--fullscreen': window.innerHeight - 50 + "px" // 50px is the height of the Navbar component
+                '--fullscreen': this.$store.getters.getFullscreenWindowHeight
             };
         }
     },
@@ -54,7 +58,7 @@ export default {
             This fixes height problems for mobile devices 
         \*------------------------------------------------*/
 
-        document.getElementById('screen').style.height = window.innerHeight - 50 + "px";
+        document.getElementById('screen').style.height = window.innerHeight - 35 + "px";
         window.addEventListener('resize', () => {
             let vh = window.innerHeight * 0.01;
             document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -65,6 +69,10 @@ export default {
             document.html.style.height = window.innerHeight + "px";
         }
         window.addEventListener("resize", resetHeight);
+
+        let navbar = document.getElementById('navbar')
+        let height = navbar.clientHeight
+        this.$store.commit('setFullscreenWindowHeight', window.innerHeight - height + "px");
     },
     methods: {
         openWindow(windowId) {
@@ -85,9 +93,17 @@ export default {
 </script>
 
 <style>
-@import './assets/css/normalize.css';
+/*-------------------------------------------------------*\
+    CSS Imports
+    Change 'blueprint' to 'windows' to use windows theme
+\*-------------------------------------------------------*/
+@import './assets/css/utils/normalize.css';
+@import './assets/css/blueprint/app.css'; 
+@import './assets/css/blueprint/window.css'; 
+@import './assets/css/blueprint/appgrid.css'; 
+
 /*-------------------------------------------*\
-    CSS Normalisation 
+    Utilities
 \*-------------------------------------------*/
 
 html {
@@ -109,32 +125,6 @@ html {
     width: 100%;
     position: relative; 
     z-index: 999;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-size: 20px 20px;
-    background:
-        linear-gradient(-90deg, rgba(85, 150, 229, 0.15) 1px, transparent 1px),
-        linear-gradient(rgba(85, 150, 229, 0.15) 1px, transparent 1px), 
-        linear-gradient(-90deg, rgba(85, 150, 229, 0.1) 1px, transparent 1px),
-        linear-gradient(rgba(85, 150, 229, 0.1) 1px, transparent 1px),
-        linear-gradient(transparent 3px, rgb(253, 253, 253) 3px, rgb(253, 253, 253) 78px, transparent 78px),
-        linear-gradient(-90deg, rgb(141, 202, 255) 1px, transparent 1px),
-        linear-gradient(-90deg, transparent 3px, rgb(253, 253, 253) 3px, rgb(253, 253, 253) 78px, transparent 78px),
-        linear-gradient(rgb(141, 202, 255) 1px, transparent 1px),
-        rgb(253, 253, 253);
-    background-size:
-        4px 4px,
-        4px 4px,
-        80px 80px,
-        80px 80px,
-        80px 80px,
-        80px 80px,
-        80px 80px,
-        80px 80px;
 }
 
 /*-------------------------------------------*\

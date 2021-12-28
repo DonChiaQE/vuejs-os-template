@@ -1,5 +1,5 @@
 <template>
-<interact draggable :dragOption="dragOption" resizable :resizeOption="resizeOption" class="resize-drag" :style="style" @dragmove="dragmove" @resizemove="resizemove" @click.native="setActiveWindow" :class="{ fullscreen: this.WindowFullscreen, minimize: $store.getters.getWindowById(ComponentName).windowState=='minimize'}">
+<interact draggable :dragOption="dragOption" resizable :resizeOption="resizeOption" class="window window-style" :style="style" @dragmove="dragmove" @resizemove="resizemove" @click.native="setActiveWindow" :class="{ fullscreen: $store.getters.getWindowFullscreen(this.ComponentName), minimize: $store.getters.getWindowById(ComponentName).windowState=='minimize'}">
     <div class="top-bar" id="top-bar" @dblclick="toggleWindowSize">
         <h3 class="window-name">{{this.window.displayName}}</h3>
         <div class="triple-button">
@@ -18,73 +18,6 @@
 
 <style scoped>
 /*-------------------------------------------*\
-    Buttons 
-\*-------------------------------------------*/
-
-.minimize-button {
-    width: 12px;
-    height: 12px;
-    background-color: yellow;
-    margin: 5px;
-    border-radius: 50%;
-}
-
-.expand-button {
-    width: 12px;
-    height: 12px;
-    background-color: green;
-    margin: 5px;
-    border-radius: 50%;
-}
-
-.close-button {
-    width: 12px;
-    height: 12px;
-    background-color: red;
-    margin: 5px;
-    border-radius: 50%;
-}
-
-.triple-button {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.button:hover {
-    cursor: pointer;
-}
-
-/*-------------------------------------------*\
-    Top Bar
-\*-------------------------------------------*/
-
-.top-bar {
-    display: flex;
-    flex: 0 1 auto;
-    width: auto;
-    background: #4C9CFF;
-    z-index: 10;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: row;
-    border-radius: 8px 8px 0px 0px;
-    padding: 4px;
-}
-
-.top-bar:hover {
-    cursor: default;
-}
-
-.window-name {
-    color: black;
-    display: flex;
-    align-items: center;
-    padding: 0;
-    margin: 0 0 0 3px;
-}
-
-/*-------------------------------------------*\
     Windows/Display
 \*-------------------------------------------*/
 
@@ -92,10 +25,8 @@
     display: none;
 }
 
-.resize-drag {
+.window {
     box-sizing: border-box;
-    background: #70AFDE;
-    border: solid #5B6DCD 1px;
     padding: 0px;
     margin: 0px;
     min-height: 50vh;
@@ -105,7 +36,6 @@
     touch-action: none;
     flex-flow: column;
     display: flex;
-    border-radius: 8px;
 }
 
 .fullscreen {
@@ -124,23 +54,6 @@
     padding-left: 15%;
     padding-top: 5%;
     padding-bottom: 5%;
-}
-
-/*-------------------------------------------*\
-    CSS Normalisation 
-\*-------------------------------------------*/
-
-button {
-    background: none;
-    color: inherit;
-    border: none;
-    font: inherit;
-    outline: inherit;
-}
-
-p {
-    margin: 0 0 0 0;
-    padding: 0 0 0 0;
 }
 </style>
 
@@ -214,7 +127,7 @@ export default {
                 height: `${this.h}px`,
                 width: `${this.w}px`,
                 transform: `translate(${this.x}px, ${this.y}px)`,
-                '--fullscreen': window.innerHeight - 40 + "px"
+                '--fullscreen': this.$store.getters.getFullscreenWindowHeight
             };
         }
     },
@@ -246,13 +159,21 @@ export default {
         },
 
         toggleWindowSize() {
-            if (this.WindowFullscreen == true) {
-                this.WindowFullscreen = false
+            if (this.$store.getters.getWindowFullscreen(this.ComponentName) == true) {
+                const payload = {
+                    'fullscreen': false,
+                    'windowID': this.ComponentName
+                }
+                this.$store.commit('setFullscreen', payload)
                 this.x = this.tempX
                 this.y = this.tempY
 
-            } else if (this.WindowFullscreen == false) {
-                this.WindowFullscreen = true
+            } else if (this.$store.getters.getWindowFullscreen(this.ComponentName) == false) {
+                const payload = {
+                    'fullscreen': true,
+                    'windowID': this.ComponentName
+                }
+                this.$store.commit('setFullscreen', payload)
                 const tempX = this.x
                 const tempY = this.y
                 this.tempX = tempX

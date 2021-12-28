@@ -6,7 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     // Height of Fullscreen Window (WIP)
-    fullscreenWindowHeight: window.innerHeight - 50,
+    fullscreenWindowHeight: window.innerHeight + "px",
 
     // Active Window State
     activeWindow: "nil", // Name of first window you want
@@ -27,6 +27,7 @@ export default new Vuex.Store({
         positionY: "15vh",
         iconImage: "placeholder.png",
         altText: "Placeholder Icon",
+        fullscreen: false
       },
       {
         windowId: "WindowTwo", // this needs to match ID, name and file name
@@ -37,6 +38,7 @@ export default new Vuex.Store({
         positionY: "10vh",
         iconImage: "placeholder.png",
         altText: "Placeholder Icon",
+        fullscreen: false
       },
       {
         windowId: "DateTime", // this needs to match ID, name and file name
@@ -47,6 +49,7 @@ export default new Vuex.Store({
         positionY: "12vh",
         iconImage: "placeholder.png",
         altText: "Placeholder Icon",
+        fullscreen: false
       },
       // register your new windows here
     ],
@@ -55,31 +58,41 @@ export default new Vuex.Store({
   mutations: {
     // Active Window Mutator
     setActiveWindow(state, window) {
-      state.activeWindow = window;
+      state.activeWindow = window
     },
 
     // Pushes Active Window onto Active Windows Array
     pushActiveWindow(state, window) {
-      state.activeWindows.push(window);
+      state.activeWindows.push(window)
     },
 
     // Removes Active Window from Active Windows Array
     popActiveWindow(state, window) {
       const windowIndex = state.activeWindows.indexOf(window);
       if (windowIndex !== -1) {
-        state.activeWindows.splice(windowIndex, 1);
+        state.activeWindows.splice(windowIndex, 1)
       }
     },
 
     // Z-index increment function
     zIndexIncrement(state, windowID) {
-      state.zIndex += 1;
-      document.getElementById(windowID).style.zIndex = state.zIndex;
+      state.zIndex += 1
+      document.getElementById(windowID).style.zIndex = state.zIndex
     },
 
-    // WIP
+    // Set height of max-height of fullscreen window
     setFullscreenWindowHeight(state, height) {
-      state.fullscreenWindowHeight = height;
+      state.fullscreenWindowHeight = height
+    },
+
+    setFullscreen(state, payload) {
+      function getArrItem() {
+        return state.windows.find(
+          (windows) => windows.windowId === payload.windowID
+        );
+      }
+      const window = getArrItem();
+      window.fullscreen = payload.fullscreen;
     },
 
     // Window State Mutator
@@ -136,6 +149,10 @@ export default new Vuex.Store({
     // Window Getter
     getWindowById: (state) => (id) => {
       return state.windows.find((window) => window.windowId === id);
+    },
+
+    getWindowFullscreen: (state) => (id) => {
+      return state.windows.find((window) => window.windowId === id).fullscreen;
     },
 
     getWindows: (state) => {
