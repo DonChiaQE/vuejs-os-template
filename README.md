@@ -14,17 +14,17 @@
 - [x] Navbar
 - [x] App Grid
 - [x] Basic Accessibility (Sematic HTML/Alt Images etc.)
+- [x] Improve experience on mobile
 - [ ] Advanced Accessibility (Keyboard Controls/ARIA)
-- [ ] Improve experience on mobile
 - [ ] Simplifying Process of Registering Components
 - [ ] Basic styling for Mac variant
 - [ ] Basic Styling for Windows variant
 - [ ] Basic Styling for Linux variant
 
 # To-do
+- [x] Clean Up CSS Code
 - [ ] Mobile Tap Gestures
 - [ ] Detect Navbar Height Automatically
-- [ ] Clean Up CSS Code
 - [ ] Clean Up Vuex
 - [ ] Document Code
 

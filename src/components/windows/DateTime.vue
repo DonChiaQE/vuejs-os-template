@@ -1,25 +1,27 @@
 <template>
 <interact draggable :dragOption="dragOption" resizable :resizeOption="resizeOption" class="resize-drag" :style="style" @dragmove="dragmove" @resizemove="resizemove" @click.native="setActiveWindow" :class="{ fullscreen: this.WindowFullscreen, minimize: $store.getters.getWindowById(ComponentName).windowState=='minimize'}">
-    <button class="top-bar" id="top-bar" v-on:dblclick="toggleWindowSize">
-        <slot name="title" class="window-name">
-            <!-- slot for window title -->
-        </slot>
+    <div class="top-bar" id="top-bar" @dblclick="toggleWindowSize">
+        <h3 class="window-name">{{this.window.displayName}}</h3>
         <div class="triple-button">
-            <button class="expand_button button" @click="toggleWindowSize"></button>
-            <button class="minimize_button button" @click="minimizeWindow"></button>
-            <button class="close_button button" @click="closeWindow"></button>
+            <button class="expand-button button" @click="toggleWindowSize"></button>
+            <button class="minimize-button button" @click="minimizeWindow"></button>
+            <button class="close-button button" @click="closeWindow"></button>
         </div>
-    </button>
+    </div>
     <div class="content">
-        <slot name="content">
-            <!-- slot for content -->
-        </slot>
+        <time>
+            {{time}} {{date}}
+        </time>
     </div>
 </interact>
 </template>
 
 <style scoped>
-.minimize_button {
+/*-------------------------------------------*\
+    Buttons 
+\*-------------------------------------------*/
+
+.minimize-button {
     width: 12px;
     height: 12px;
     background-color: yellow;
@@ -27,7 +29,7 @@
     border-radius: 50%;
 }
 
-.expand_button {
+.expand-button {
     width: 12px;
     height: 12px;
     background-color: green;
@@ -35,7 +37,7 @@
     border-radius: 50%;
 }
 
-.close_button {
+.close-button {
     width: 12px;
     height: 12px;
     background-color: red;
@@ -43,22 +45,48 @@
     border-radius: 50%;
 }
 
+.triple-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .button:hover {
     cursor: pointer;
 }
 
-button {
-    background: none;
-    color: inherit;
-    border: none;
-    font: inherit;
-    outline: inherit;
+/*-------------------------------------------*\
+    Top Bar
+\*-------------------------------------------*/
+
+.top-bar {
+    display: flex;
+    flex: 0 1 auto;
+    width: auto;
+    background: #4C9CFF;
+    z-index: 10;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    border-radius: 8px 8px 0px 0px;
+    padding: 4px;
 }
 
-p {
-    margin: 0 0 0 0;
-    padding: 0 0 0 0;
+.top-bar:hover {
+    cursor: default;
 }
+
+.window-name {
+    color: black;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0 0 0 3px;
+}
+
+/*-------------------------------------------*\
+    Windows/Display
+\*-------------------------------------------*/
 
 .minimize {
     display: none;
@@ -88,37 +116,6 @@ p {
     padding: 0;
 }
 
-.top-bar {
-    display: flex;
-    flex: 0 1 auto;
-    width: auto;
-    background: #4C9CFF;
-    z-index: 10;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: row;
-    border-radius: 8px 8px 0px 0px;
-    padding: 4px;
-}
-
-.top-bar:hover {
-    cursor: default;
-}
-
-.window-name {
-    color: black;
-    display: flex;
-    align-items: center;
-    padding: 0;
-    margin: 0 0 0 3px;
-}
-
-.triple-button {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
 .content {
     overflow: scroll;
     flex: 1 1 auto;
@@ -128,25 +125,40 @@ p {
     padding-top: 5%;
     padding-bottom: 5%;
 }
+
+/*-------------------------------------------*\
+    CSS Normalisation 
+\*-------------------------------------------*/
+
+button {
+    background: none;
+    color: inherit;
+    border: none;
+    font: inherit;
+    outline: inherit;
+}
+
+p {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
 </style>
 
 <script>
 import interact from "interactjs";
+import moment from 'moment'
 export default {
-    name: 'WindowTemplate', // VERY IMPORTANT TO NAME YOUR COMPONENT <--
-    props: {
-        windowID: {
-            type: String,
-            required: true
-        },
-    },
+    name: "DateTime", // VERY IMPORTANT TO NAME YOUR COMPONENT <--
     data: function () {
         return {
-            // name
+            // ID Name of window (important)
             ComponentName: this.$options.name,
 
-            // states
-            WindowFullscreen: false, // false, true
+            // window fullscreen state
+            WindowFullscreen: false, // false, true,
+
+            // window
+            Window: {},
 
             // InteractJS states and modifiers
             resizeOption: {
@@ -159,7 +171,7 @@ export default {
                 margin: 8,
                 modifiers: [
                     // interact.modifiers.restrictRect({
-                    //     restriction: '#screen'
+                    //     restriction: '#screen',
                     // })
                 ],
             },
@@ -180,7 +192,21 @@ export default {
             w: 400,
             h: 400,
 
+            // date time for moment.js
+            time: '',
+            date: ''
         }
+    },
+    beforeMount() {
+        setInterval(() => {
+            this.time = moment().format('hh:mm A')
+        }, 1000)
+        setInterval(() => {
+            this.date = moment().format('ddd DD MMMM')
+        }, 1000)
+    },
+    created() {
+        this.window = this.$store.getters.getWindowById(this.ComponentName)
     },
     computed: {
         style() {
@@ -188,7 +214,7 @@ export default {
                 height: `${this.h}px`,
                 width: `${this.w}px`,
                 transform: `translate(${this.x}px, ${this.y}px)`,
-                '--fullscreen': window.innerHeight - 50 + "px"
+                '--fullscreen': window.innerHeight - 40 + "px"
             };
         }
     },
@@ -237,6 +263,7 @@ export default {
         },
 
         setActiveWindow() {
+            console.log("set")
             this.$store.commit('zIndexIncrement', this.ComponentName)
             this.$store.commit('setActiveWindow', this.ComponentName)
         },

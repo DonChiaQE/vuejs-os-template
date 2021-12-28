@@ -24,9 +24,9 @@
 
 <script>
 import Navbar from './components/Navbar.vue'
-import WindowOne from './components/WindowOne.vue'
-import WindowTwo from './components/WindowTwo.vue'
-import DateTime from './components/DateTime.vue'
+import WindowOne from './components/windows/WindowOne.vue'
+import WindowTwo from './components/windows/WindowTwo.vue'
+import DateTime from './components/windows/DateTime.vue'
 import AppGrid from './components/AppGrid.vue'
 export default {
     name: 'App',

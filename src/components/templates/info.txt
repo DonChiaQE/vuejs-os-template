@@ -1,4 +1,0 @@
-This is a window's base template with slots implemented.
-I have yet to implement slots as it would probably make the workflow even more complex.
-
-But if you're planning to make use of slots and know your way around Vue, feel free to make use of the template. 
