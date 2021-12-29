@@ -1,13 +1,17 @@
 # [OS Website Template for Vue.js](https://thirsty-wright-cae0f8.netlify.app/)
 
-**Blueprint Theme**
-
-<img width="1440" alt="Screenshot 2021-12-21 at 5 16 53 PM" src="https://user-images.githubusercontent.com/24926784/146904065-05513a29-261b-4f35-b952-5bde1599a35d.png"/>
-
-
 **Windows Theme**
 
 <img width="1440" alt="Screenshot 2021-12-21 at 5 16 53 PM" src="https://user-images.githubusercontent.com/24926784/147592582-8caa82c1-1d01-400c-b34e-e5fef7fdfbaf.png"/>
+
+**MacOS Theme**
+
+<img width="1440" alt="Screenshot 2021-12-29 at 2 41 39 PM" src="https://user-images.githubusercontent.com/24926784/147634302-a70de1ee-0687-4146-9a0e-bad62df1967c.png">
+
+
+**Blueprint Theme**
+
+<img width="1440" alt="Screenshot 2021-12-21 at 5 16 53 PM" src="https://user-images.githubusercontent.com/24926784/146904065-05513a29-261b-4f35-b952-5bde1599a35d.png"/>
 
 # Development
 - [x] Basic Windows Logic
@@ -23,9 +27,9 @@
 - [x] Basic Accessibility (Sematic HTML/Alt Images etc.)
 - [x] Improve experience on mobile
 - [x] Basic Styling for Windows variant
+- [x] Basic styling for Mac variant
 - [ ] Advanced Accessibility (Keyboard Controls/ARIA)
 - [ ] Simplifying Process of Registering Components
-- [ ] Basic styling for Mac variant
 - [ ] Basic Styling for Linux variant
 
 # To-do
