@@ -6,7 +6,7 @@
 
 **MacOS Theme**
 
-<img width="1440" alt="Screenshot 2021-12-29 at 2 41 39 PM" src="https://user-images.githubusercontent.com/24926784/147634302-a70de1ee-0687-4146-9a0e-bad62df1967c.png">
+<img width="1440" alt="Screenshot 2021-12-29 at 3 06 44 PM" src="https://user-images.githubusercontent.com/24926784/147636162-cc095413-a099-4b59-baf0-36467fbfee99.png">
 
 
 **Blueprint Theme**
