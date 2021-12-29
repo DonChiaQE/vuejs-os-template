@@ -1,5 +1,6 @@
 <template>
 <div id="app">
+    <top-navbar id="top-navbar" ></top-navbar>
     <div 
         class="screen" 
         id="screen" 
@@ -18,16 +19,16 @@
         </span> 
         <app-grid></app-grid>
     </div>
-    <navbar id="navbar" ref="navbar"/>
+    <navbar id="navbar"/>
 </div>
 </template>
 
 <script>
-import Navbar from './components/blueprint/Navbar.vue'
+import Navbar from './components/macos/Navbar.vue'
 /*-----------------------------------------------------------*\
     Use following snippet to import a windows themed navbar 
 \*-----------------------------------------------------------*/
-// import Navbar from './components/windows/Navbar.vue'
+import TopNavbar from './components/macos/TopNavbar.vue'
 import WindowOne from './components/views/WindowOne.vue'
 import WindowTwo from './components/views/WindowTwo.vue'
 import DateTime from './components/views/DateTime.vue'
@@ -45,6 +46,7 @@ export default {
         DateTime,
         Navbar,
         AppGrid,
+        TopNavbar
     },
     computed: {
         style() {
@@ -56,9 +58,18 @@ export default {
     mounted() {
         /*------------------------------------------------*\
             This fixes height problems for mobile devices 
+
+            Code is detecting height of navbar and setting
+            respective heights of screen
         \*------------------------------------------------*/
 
-        document.getElementById('screen').style.height = window.innerHeight - 35 + "px";
+        let navbar = document.getElementById('navbar')
+        let topnavbar = document.getElementById('top-navbar')
+        let topNavbarHeight = topnavbar.clientHeight
+        let navbarHeight = navbar.clientHeight
+
+        document.getElementById('screen').style.height = window.innerHeight - navbarHeight - topNavbarHeight + "px";
+
         window.addEventListener('resize', () => {
             let vh = window.innerHeight * 0.01;
             document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -69,10 +80,7 @@ export default {
             document.html.style.height = window.innerHeight + "px";
         }
         window.addEventListener("resize", resetHeight);
-
-        let navbar = document.getElementById('navbar')
-        let height = navbar.clientHeight
-        this.$store.commit('setFullscreenWindowHeight', window.innerHeight - height + "px");
+        this.$store.commit('setFullscreenWindowHeight', window.innerHeight - navbarHeight - topNavbarHeight  + "px");
     },
     methods: {
         openWindow(windowId) {
@@ -98,9 +106,9 @@ export default {
     Change 'blueprint' to 'windows' to use windows theme
 \*-------------------------------------------------------*/
 @import './assets/css/utils/normalize.css';
-@import './assets/css/blueprint/app.css'; 
-@import './assets/css/blueprint/window.css'; 
-@import './assets/css/blueprint/appgrid.css'; 
+@import './assets/css/macos/app.css'; 
+@import './assets/css/macos/window.css'; 
+@import './assets/css/macos/appgrid.css'; 
 
 /*-------------------------------------------*\
     Utilities

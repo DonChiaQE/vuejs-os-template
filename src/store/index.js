@@ -5,11 +5,11 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    // Height of Fullscreen Window (WIP)
+    // Height of Fullscreen Window
     fullscreenWindowHeight: window.innerHeight + "px",
 
     // Active Window State
-    activeWindow: "nil", // Name of first window you want
+    activeWindow: "nil", 
 
     // Active Windows Array State
     activeWindows: [],
@@ -130,11 +130,11 @@ export default new Vuex.Store({
           this.commit("popActiveWindow", window);
         }, 1);
         setTimeout(() => {
-          this.commit("setActiveWindow", "nil"); // This depends on the OS you're mimicking (Window -> nil, MacOS -> Finder)
+          this.commit("setActiveWindow", "nil"); 
         }, 1);
       } else if (payload.windowState == "minimize") {
         window.windowState = payload.windowState;
-        this.commit("setActiveWindow", "nil"); // This depends on the OS you're mimicking (Window -> nil, MacOS -> Finder)
+        this.commit("setActiveWindow", "nil"); 
       } else {
         console.log("Error: windowState not found or invalid");
       }

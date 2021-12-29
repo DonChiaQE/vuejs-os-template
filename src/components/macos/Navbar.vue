@@ -1,34 +1,20 @@
 <template>
+<div class="wrapper">
 <nav class="navbar-container">
     <div 
-        v-for="window in this.activeWindows" 
+        v-for="window in this.windows" 
         :key="window.key"
     >
         <button 
-            v-if="window.windowState=='open'" 
             @click="openWindow(window.windowId)" 
-            class="navbar-item open"
+            class="navbar-item"
+            :style="{backgroundImage: 'url(' + require('../../assets/icons/' + window.iconImage) + ')'}"
+            :alt="window.altText"
         >
-        {{window.displayName}}
-        </button>
-        <button 
-            v-if="window.windowState=='minimize'" 
-            @click="openWindow(window.windowId)" 
-            class="navbar-item minimize"
-        >
-        {{window.displayName}}
-        </button>
-        <button 
-            v-if="window.windowState=='close'" 
-            @click="openWindow(window.windowId)" 
-            class="navbar-item close"
-        >
-        {{window.displayName}}
         </button>
     </div>
-    <div class="spacer"></div>
-    <p class="label">Active Window: {{$store.getters.getActiveWindow}}</p>
 </nav>
+</div>
 </template>
 
 <style scoped>
@@ -37,13 +23,26 @@
 \*-------------------------------------------*/
 
 .navbar-container {
-    width: 100%;
-    height: 50px;
-    background-color: #0073ff;
-    z-index: 100;
+    width: auto;
+    height: 70px;
+    background-color: rgba(255, 255, 255, .15);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgb(255, 255, 255, 0.2);
     display: flex;
-    flex-direction: row;
+    justify-content: space-evenly;
     align-items: center;
+    z-index: 100;
+}
+
+.wrapper {
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
 /*-------------------------------------------*\
@@ -51,39 +50,27 @@
 \*-------------------------------------------*/
 
 .navbar-item {
-    color: white;
-    display: flex;
+    width: 45px;
+    height: 45px;
+    border-radius: 10px;
+    justify-content: center;
     align-items: center;
-    padding-right: 1rem;
-    padding-left: 1rem;
-    width: auto;
-    height: 50px;
-    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    background: none;
+    background: white;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 .navbar-item:hover {
     cursor: pointer;
 }
 
-.open {
-    background: green;
-}
-
-.minimize {
-    background: yellow;
-}
-
-.close {
-    display: none;
-}
-
 /*-------------------------------------------*\
     Utilities
 \*-------------------------------------------*/
-
-.spacer {
-    flex-grow: 1;
-}
 
 .label {
     font-weight: bold;
@@ -110,7 +97,7 @@ export default {
     name: 'Navbar',
     data: function() {
         return {
-            activeWindows: this.$store.getters.getActiveWindows,
+            windows: this.$store.getters.getWindows,
         }
     },
     methods: {

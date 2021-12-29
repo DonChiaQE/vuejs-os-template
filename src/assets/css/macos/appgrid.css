@@ -9,11 +9,16 @@
     margin: 1rem;
     align-items: center;
     text-align: center;
+    padding: 6px;
 }
 
 .icon-text {
     color: white;
-    margin: 1px;
+    font-weight: bold;
+    font-size: 12px;
+    padding: 3px;
+    margin: 4px 1px 1px 1px;
+    text-shadow: 1px 1px rgb(0,0,0, 0.4);
 }
 
 .border {
@@ -26,17 +31,23 @@
 }
 
 .icon:focus .icon-image {
-    filter: grayscale(100%) brightness(30%) sepia(100%) hue-rotate(-180deg) saturate(400%) contrast(0.9);
+    background-color: rgb(104, 104, 104, 0.4);
+    border-radius: 4px;
+    padding: 6px;
+    margin: -6px -6px -6px -6px;
+    
 }
 
 .icon:focus .icon-text {
-    background: rgb(0, 0, 118);
+    background: rgb(41, 97, 217);
+    border-radius: 2px;
     color: white;
-    margin: 0px;
+    padding: 3px;
+    margin: 4px 1px 1px 1px;
 }
 
 .icon:focus .border {
-    border: rgb(255, 255, 148) dotted 1px;
+
 }
 
 /*-------------------------------------------*\
@@ -44,7 +55,7 @@
 \*-------------------------------------------*/
 
 p {
-    margin: 1vw 0 0 0;
+    margin: 0 0 0 0;
     padding: 0 0 0 0;
 }
 

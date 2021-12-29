@@ -1,11 +1,19 @@
 <template>
 <nav class="navbar-container">
-    <div v-for="window in this.activeWindows" :key="window.key">
-        <button v-if="$store.getters.getActiveWindow!==window.windowId && (window.windowState=='open' || window.windowState=='minimize')" v-on:click="openWindow(window.windowId)" class="navbar-item open">
-            {{window.displayName}}
+    <div 
+        v-for="window in this.activeWindows" 
+        :key="window.key"
+    >
+        <button 
+            v-if="$store.getters.getActiveWindow!==window.windowId && (window.windowState=='open' || window.windowState=='minimize')" v-on:click="openWindow(window.windowId)" 
+            class="navbar-item open">
+                {{window.displayName}}
         </button>
-        <button v-if="$store.getters.getActiveWindow==window.windowId" v-on:click="openWindow(window.windowId)" class="navbar-item-depressed">
-            {{window.displayName}}
+        <button 
+            v-if="$store.getters.getActiveWindow==window.windowId" 
+            v-on:click="openWindow(window.windowId)" 
+            class="navbar-item-depressed">
+                {{window.displayName}}
         </button>
     </div>
     <div class="spacer"></div>

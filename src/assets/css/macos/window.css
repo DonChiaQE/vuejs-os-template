@@ -2,9 +2,15 @@
     Windows/Display
 \*-------------------------------------------*/
 .window-style {
-    background: #70AFDE;
-    border: solid #5B6DCD 1px;
-    border-radius: 8px;
+    border-radius: 15px;
+    background: #F3F2F2;
+    overflow: hidden;
+    border: 1px solid #dadada;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0, 0, 0, 0.14);
+    /* transition: all 0.5s ease; */
+    max-height: 100%;
+    max-width: 100%;
+    align-items: flex-end;
 }
 
 /*-------------------------------------------*\
@@ -12,33 +18,36 @@
 \*-------------------------------------------*/
 
 .minimize-button {
-    width: 12px;
     height: 12px;
-    background-color: yellow;
-    margin: 5px;
+    width: 12px;
     border-radius: 50%;
+    background: #f5bf50;
 }
 
 .expand-button {
-    width: 12px;
     height: 12px;
-    background-color: green;
-    margin: 5px;
+    width: 12px;
     border-radius: 50%;
+    background: #62c454;
 }
 
 .close-button {
-    width: 12px;
     height: 12px;
-    background-color: red;
-    margin: 5px;
+    width: 12px;
     border-radius: 50%;
+    background: #ed6a06;
+
 }
 
 .triple-button {
     display: flex;
+    flex-direction: row-reverse;
+    padding-left: 15px;
     align-items: center;
+    width: 50px;
     justify-content: space-between;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 .button:hover {
@@ -51,15 +60,11 @@
 
 .top-bar {
     display: flex;
-    flex: 0 1 auto;
-    width: auto;
-    background: #4C9CFF;
+    height: 40px;
+    width: 100%;
+    background: #ECECED;
     z-index: 10;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: row;
-    border-radius: 8px 8px 0px 0px;
-    padding: 4px;
+    border-bottom: #dadada 1px solid;
 }
 
 .top-bar:hover {
@@ -67,11 +72,7 @@
 }
 
 .window-name {
-    color: black;
-    display: flex;
-    align-items: center;
-    padding: 0;
-    margin: 0 0 0 3px;
+    display: none;
 }
 
 /*-------------------------------------------*\
