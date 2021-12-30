@@ -17,18 +17,7 @@
 </template>
 
 <style scoped>
-/*-------------------------------------------*\
-    Grid 
-\*-------------------------------------------*/
 
-.grid-container {
-    height: calc(var(--vh, 1vh) * 100 - 60px);
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    width: 0;
-    margin-top: 10px;
-}
 </style>
 
 <script>

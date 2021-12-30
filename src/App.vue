@@ -1,52 +1,60 @@
 <template>
 <div id="app">
-    <top-navbar id="top-navbar" ></top-navbar>
-    <div 
-        class="screen" 
-        id="screen" 
-    >
-        <span 
+    <top-navbar id="top-navbar"></top-navbar>
+    <div class="screen" id="screen">
+        <div 
             v-for="window in windows" 
-            :key="window.key"
+            :key="window.key" 
+            :aria-label="window.displayName"
         >
-            <component 
-                :is="window.windowId" 
+            <window 
+                :nameOfWindow="window.windowId" 
                 :id="window.windowId" 
                 :style="{position: window.position, left: window.positionX, top: window.positionY}" 
                 v-if="windowCheck(window.windowId)"
             >
-            </component>
-        </span> 
+                <div slot="content">
+                    <component 
+                        :is="window.windowContent"
+                    >
+                    </component>
+                </div>
+            </window>
+        </div>
         <app-grid></app-grid>
     </div>
-    <navbar id="navbar"/>
+    <navbar id="navbar" />
 </div>
 </template>
 
 <script>
-import Navbar from './components/macos/Navbar.vue'
+import Navbar from './components/windows/Navbar.vue'
 /*-----------------------------------------------------------*\
     Use following snippet to import a windows themed navbar 
 \*-----------------------------------------------------------*/
-import TopNavbar from './components/macos/TopNavbar.vue'
-import WindowOne from './components/views/WindowOne.vue'
-import WindowTwo from './components/views/WindowTwo.vue'
-import DateTime from './components/views/DateTime.vue'
+// import TopNavbar from './components/macos/TopNavbar.vue'
+import Window from './components/template/window.vue'
 import AppGrid from './components/AppGrid.vue'
+import Placeholder from './components/views/placeholder.vue'
 export default {
     name: 'App',
     data: function () {
         return {
-            windows: this.$store.getters.getWindows
+            windows: this.$store.getters.getWindows,
+            windowComponents: {}
         }
     },
     components: {
-        WindowOne,
-        WindowTwo,
-        DateTime,
+        Window,
         Navbar,
         AppGrid,
-        TopNavbar
+        Placeholder,
+        // TopNavbar,
+    },
+    created() {
+        for (let i = 0; i < this.windows.length; i++) {
+            this.windowComponents[this.windows[i].windowId] = this.windows[i].windowContent
+        }
     },
     computed: {
         style() {
@@ -80,7 +88,7 @@ export default {
             document.html.style.height = window.innerHeight + "px";
         }
         window.addEventListener("resize", resetHeight);
-        this.$store.commit('setFullscreenWindowHeight', window.innerHeight - navbarHeight - topNavbarHeight  + "px");
+        this.$store.commit('setFullscreenWindowHeight', window.innerHeight - navbarHeight - topNavbarHeight + "px");
     },
     methods: {
         openWindow(windowId) {
@@ -92,23 +100,23 @@ export default {
         },
 
         windowCheck(windowId) {
-            if (this.$store.getters.getWindowById(windowId).windowState=='open') {
+            if (this.$store.getters.getWindowById(windowId).windowState == 'open') {
                 return true
             }
-        }
+        },
     },
 }
 </script>
 
 <style>
-/*-------------------------------------------------------*\
+/*---------------------------------------------------------------------------*\
     CSS Imports
-    Change 'blueprint' to 'windows' to use windows theme
-\*-------------------------------------------------------*/
+    Change 'blueprint' to 'windows' or 'macos' to use windows or macos theme
+\*---------------------------------------------------------------------------*/
 @import './assets/css/utils/normalize.css';
-@import './assets/css/macos/app.css'; 
-@import './assets/css/macos/window.css'; 
-@import './assets/css/macos/appgrid.css'; 
+@import './assets/css/windows/app.css';
+@import './assets/css/windows/window.css';
+@import './assets/css/windows/appgrid.css';
 
 /*-------------------------------------------*\
     Utilities
@@ -131,7 +139,7 @@ html {
 
 .screen {
     width: 100%;
-    position: relative; 
+    position: relative;
     z-index: 999;
 }
 

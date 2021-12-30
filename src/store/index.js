@@ -22,6 +22,7 @@ export default new Vuex.Store({
         windowId: "WindowOne", // this needs to match ID, name and file name
         windowState: "close",
         displayName: "Window One",
+        windowContent: 'placeholder',
         position: "absolute",
         positionX: "10vw",
         positionY: "15vh",
@@ -33,6 +34,7 @@ export default new Vuex.Store({
         windowId: "WindowTwo", // this needs to match ID, name and file name
         windowState: "close",
         displayName: "Window Two",
+        windowContent: 'placeholder',
         position: "absolute",
         positionX: "8vw",
         positionY: "10vh",
@@ -44,6 +46,7 @@ export default new Vuex.Store({
         windowId: "DateTime", // this needs to match ID, name and file name
         windowState: "close",
         displayName: "Date Time",
+        windowContent: 'placeholder',
         position: "absolute",
         positionX: "6vw",
         positionY: "12vh",

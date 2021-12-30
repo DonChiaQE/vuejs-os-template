@@ -9,9 +9,9 @@
         </div>
     </div>
     <div class="content">
-        <time>
-            {{time}} {{date}}
-        </time>
+        <slot name="content">
+            
+        </slot>
     </div>
 </interact>
 </template>
@@ -59,16 +59,14 @@
 
 <script>
 import interact from "interactjs";
-import moment from 'moment'
 export default {
-    name: "DateTime", // VERY IMPORTANT TO NAME YOUR COMPONENT <--
+    props: {
+        'nameOfWindow': String
+    },
     data: function () {
         return {
             // ID Name of window (important)
-            ComponentName: this.$options.name,
-
-            // window fullscreen state
-            WindowFullscreen: false, // false, true,
+            ComponentName: this.nameOfWindow,
 
             // window
             Window: {},
@@ -84,7 +82,7 @@ export default {
                 margin: 8,
                 modifiers: [
                     // interact.modifiers.restrictRect({
-                    //     restriction: '#screen',
+                    //     restriction: '#screen'
                     // })
                 ],
             },
@@ -105,21 +103,7 @@ export default {
             w: 400,
             h: 400,
 
-            // date time for moment.js
-            time: '',
-            date: ''
         }
-    },
-    beforeMount() {
-        setInterval(() => {
-            this.time = moment().format('hh:mm A')
-        }, 1000)
-        setInterval(() => {
-            this.date = moment().format('ddd DD MMMM')
-        }, 1000)
-    },
-    created() {
-        this.window = this.$store.getters.getWindowById(this.ComponentName)
     },
     computed: {
         style() {
@@ -130,6 +114,9 @@ export default {
                 '--fullscreen': this.$store.getters.getFullscreenWindowHeight
             };
         }
+    },
+    created() {
+        this.window = this.$store.getters.getWindowById(this.ComponentName)
     },
     methods: {
         // functions to interact with window state
@@ -184,7 +171,6 @@ export default {
         },
 
         setActiveWindow() {
-            console.log("set")
             this.$store.commit('zIndexIncrement', this.ComponentName)
             this.$store.commit('setActiveWindow', this.ComponentName)
         },
