@@ -23,12 +23,6 @@
                     slot="content"
                 >
                 </component>
-
-                <form slot="email-content">
-                    <input type="text" placeholder="To:">
-                    <input type="text" placeholder="Subject:">
-                    <input type="text" placeholder="Message:">
-                </form>
             </component>
         </div>
         <app-grid></app-grid>

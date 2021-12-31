@@ -9,10 +9,13 @@
         </div>
     </div>
     <div class="content">
-        EMAIL
-        <slot name="email-content">
-            
-        </slot>
+        <h2>EMAIL</h2>
+        <form class="email-form">
+            <input class="email-input" type="text" placeholder="To:">
+            <input class="email-input" type="text" placeholder="From:">
+            <input class="email-input" type="text" placeholder="Subject:">
+            <textarea class="email-input" placeholder="Message"></textarea>
+        </form>
     </div>
 </interact>
 </template>
@@ -48,13 +51,22 @@
 }
 
 .content {
-    overflow: scroll;
-    flex: 1 1 auto;
+    flex-grow: 1;
     overflow-x: hidden;
     padding-right: var(--content-padding-right);
     padding-left: var(--content-padding-left);
     padding-top: var(--content-padding-top);
     padding-bottom: var(--content-padding-bottom);
+}
+
+h2 {
+    margin: 0;
+    padding: 0;
+}
+
+.email-input {
+    width: 100%;
+    margin: 5px 0px 5px 0px;
 }
 </style>
 
