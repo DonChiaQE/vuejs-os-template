@@ -42,7 +42,7 @@
     Import Components, you can change the path for different
     component themes (blueprint, windows, macos)
 \*------------------------------------------------------------*/
-import Navbar from './components/blueprint/Navbar'
+import Navbar from './components/windows/Navbar'
 // import TopNavbar from './components/macos/TopNavbar.vue'
 import Window from './components/template/window'
 import EmailWindow from './components/template/EmailWindow'
@@ -65,7 +65,7 @@ export default {
         Placeholder,
         EmailWindow,
         Photos,
-        Recursion
+        Recursion,
         // TopNavbar,
     },
     created() {
@@ -131,9 +131,9 @@ export default {
     Change 'blueprint' to 'windows' or 'macos' to use windows or macos theme
 \*---------------------------------------------------------------------------*/
 @import './assets/css/utils/normalize.css';
-@import './assets/css/blueprint/app.css';
-@import './assets/css/blueprint/window.css';
-@import './assets/css/blueprint/appgrid.css';
+@import './assets/css/windows/app.css';
+@import './assets/css/windows/window.css';
+@import './assets/css/windows/appgrid.css';
 
 /*-------------------------------------------*\
     Utilities

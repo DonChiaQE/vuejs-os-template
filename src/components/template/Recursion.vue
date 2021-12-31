@@ -9,7 +9,7 @@
         </div>
     </div>
     <div style="width: 100%; height: 100%;" class="content">
-        <iframe id="website" src="https://thirsty-wright-cae0f8.netlify.app/"/>
+        <iframe id="website" src="https://stupefied-darwin-04efcc.netlify.app/"/>
     </div>
 </interact>
 </template>
@@ -137,7 +137,7 @@ export default {
     },
     mounted() {
         setTimeout(() => {
-            document.getElementById('website').contentWindow.location.replace('https://thirsty-wright-cae0f8.netlify.app/')
+            document.getElementById('website').contentWindow.location.replace('https://stupefied-darwin-04efcc.netlify.app/')
         }, 1000)
     },
     computed: {
