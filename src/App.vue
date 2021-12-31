@@ -7,19 +7,29 @@
             :key="window.key" 
             :aria-label="window.displayName"
         >
-            <window 
+            <component
+                :is="window.windowComponent" 
                 :nameOfWindow="window.windowId" 
+                :content_padding_bottom="window.windowContentPadding['bottom']"
+                :content_padding_left="window.windowContentPadding['left']"
+                :content_padding_right="window.windowContentPadding['right']"
+                :content_padding_top="window.windowContentPadding['top']"
                 :id="window.windowId" 
                 :style="{position: window.position, left: window.positionX, top: window.positionY}" 
                 v-if="windowCheck(window.windowId)"
             >
-                <div slot="content">
-                    <component 
-                        :is="window.windowContent"
-                    >
-                    </component>
-                </div>
-            </window>
+                <component 
+                    :is="window.windowContent"
+                    slot="content"
+                >
+                </component>
+
+                <form slot="email-content">
+                    <input type="text" placeholder="To:">
+                    <input type="text" placeholder="Subject:">
+                    <input type="text" placeholder="Message:">
+                </form>
+            </component>
         </div>
         <app-grid></app-grid>
     </div>
@@ -28,14 +38,18 @@
 </template>
 
 <script>
-import Navbar from './components/windows/Navbar.vue'
-/*-----------------------------------------------------------*\
-    Use following snippet to import a windows themed navbar 
-\*-----------------------------------------------------------*/
+/*------------------------------------------------------------*\
+    Import Components, you can change the path for different
+    component themes (blueprint, windows, macos)
+\*------------------------------------------------------------*/
+import Navbar from './components/blueprint/Navbar.vue'
 // import TopNavbar from './components/macos/TopNavbar.vue'
-import Window from './components/template/window.vue'
+import Window from './components/template/Window.vue'
+import EmailWindow from './components/template/EmailWindow.vue'
 import AppGrid from './components/AppGrid.vue'
-import Placeholder from './components/views/placeholder.vue'
+import Placeholder from './components/views/Placeholder.vue'
+import Photos from './components/views/Photos.vue'
+import Recursion from './components/template/Recursion.vue'
 export default {
     name: 'App',
     data: function () {
@@ -49,6 +63,9 @@ export default {
         Navbar,
         AppGrid,
         Placeholder,
+        EmailWindow,
+        Photos,
+        Recursion
         // TopNavbar,
     },
     created() {
@@ -64,12 +81,12 @@ export default {
         }
     },
     mounted() {
-        /*------------------------------------------------*\
+        /*-------------------------------------------------*\
             This fixes height problems for mobile devices 
 
             Code is detecting height of navbar and setting
             respective heights of screen
-        \*------------------------------------------------*/
+        \*-------------------------------------------------*/
 
         let navbar = document.getElementById('navbar')
         let topnavbar = document.getElementById('top-navbar')
@@ -114,9 +131,9 @@ export default {
     Change 'blueprint' to 'windows' or 'macos' to use windows or macos theme
 \*---------------------------------------------------------------------------*/
 @import './assets/css/utils/normalize.css';
-@import './assets/css/windows/app.css';
-@import './assets/css/windows/window.css';
-@import './assets/css/windows/appgrid.css';
+@import './assets/css/blueprint/app.css';
+@import './assets/css/blueprint/window.css';
+@import './assets/css/blueprint/appgrid.css';
 
 /*-------------------------------------------*\
     Utilities

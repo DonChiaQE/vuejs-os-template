@@ -8,10 +8,8 @@
             <button class="close-button button" @click="closeWindow"></button>
         </div>
     </div>
-    <div class="content">
-        <slot class="window-content" name="content">
-            
-        </slot>
+    <div style="width: 100%; height: 100%;" class="content">
+        <iframe id="website" src="https://thirsty-wright-cae0f8.netlify.app/"/>
     </div>
 </interact>
 </template>
@@ -29,8 +27,8 @@
     box-sizing: border-box;
     padding: 0px;
     margin: 0px;
-    min-height: 50vh;
-    min-width: 350px;
+    min-height: 80vh;
+    min-width: 80vw;
     user-select: none;
     -ms-touch-action: none;
     touch-action: none;
@@ -53,6 +51,19 @@
     padding-left: var(--content-padding-left);
     padding-top: var(--content-padding-top);
     padding-bottom: var(--content-padding-bottom);
+}
+
+iframe {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+	margin-bottom: -5px;
+    border-bottom-right-radius: 8px;
+    border-end-start-radius: 8px;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
 }
 </style>
 
@@ -191,6 +202,9 @@ export default {
                 this.x = 0
                 this.y = 0
             }
+            setTimeout(() => {
+                document.getElementById('website').contentWindow.location.replace('https://thirsty-wright-cae0f8.netlify.app/')
+            }, 500)
         },
 
         setActiveWindow() {

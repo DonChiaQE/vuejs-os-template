@@ -14,39 +14,60 @@ export default new Vuex.Store({
     // Active Windows Array State
     activeWindows: [],
 
-    // Z-index counter
-    zIndex: 2, // Z-index has to be incremented
+    // Z-index State
+    zIndex: 2, 
 
     windows: [
       {
-        windowId: "WindowOne", // this needs to match ID, name and file name
+        windowId: "LoremIpsum", // Unique ID
+        windowState: "close", // Window State [open, close, minimize]
+        displayName: "Lorem Ipsum", // Display Name (title under icon)
+        windowComponent: 'window', // Window Component (can be changed to use modified windows)
+        windowContent: 'Placeholder', // Window Content (used under slots)
+        windowContentPadding: {
+          top: null,
+          right: null,
+          bottom: null,
+          left: null
+        }, // Window Content Padding 
+        position: "absolute", // Window Position
+        positionX: "10vw", // Window Position X (when first opened)
+        positionY: "15vh", // Window Position Y (when first opened)
+        iconImage: "placeholder.png", // Window Icon Image
+        altText: "Placeholder Icon", // Window Icon Alt Text
+        fullscreen: false // Window Fullscreen State [true, false]
+      },
+      {
+        windowId: "Recursion", 
         windowState: "close",
-        displayName: "Window One",
-        windowContent: 'placeholder',
+        displayName: "Recursion",
+        windowComponent: 'Recursion',
+        windowContent: 'Placeholder',
+        windowContentPadding: {
+          top: '0px',
+          right: '0px',
+          bottom: '0px',
+          left: '0px'
+        },
         position: "absolute",
-        positionX: "10vw",
-        positionY: "15vh",
+        positionX: "1vw",
+        positionY: "1vh",
         iconImage: "placeholder.png",
         altText: "Placeholder Icon",
         fullscreen: false
       },
       {
-        windowId: "WindowTwo", // this needs to match ID, name and file name
+        windowId: "PhotoWindow", 
         windowState: "close",
-        displayName: "Window Two",
-        windowContent: 'placeholder',
-        position: "absolute",
-        positionX: "8vw",
-        positionY: "10vh",
-        iconImage: "placeholder.png",
-        altText: "Placeholder Icon",
-        fullscreen: false
-      },
-      {
-        windowId: "DateTime", // this needs to match ID, name and file name
-        windowState: "close",
-        displayName: "Date Time",
-        windowContent: 'placeholder',
+        displayName: "Photos",
+        windowComponent: 'window',
+        windowContent: 'Photos',
+        windowContentPadding: {
+          top: '5%',
+          right: '5%',
+          bottom: '5%',
+          left: '5%'
+        },
         position: "absolute",
         positionX: "6vw",
         positionY: "12vh",
@@ -54,9 +75,27 @@ export default new Vuex.Store({
         altText: "Placeholder Icon",
         fullscreen: false
       },
+      {
+        windowId: "EmailWindow", 
+          windowState: "close",
+          displayName: "Email Window",
+          windowComponent: 'EmailWindow',
+          windowContent: 'Placeholder',
+          windowContentPadding: {
+            top: null,
+            right: null,
+            bottom: null,
+            left: null
+          },
+          position: "absolute",
+          positionX: "6vw",
+          positionY: "12vh",
+          iconImage: "placeholder.png",
+          altText: "Placeholder Icon",
+          fullscreen: false
+      },
       // register your new windows here
     ],
-    // State of windows will be linked to navbar icons
   },
   mutations: {
     // Active Window Mutator
@@ -118,23 +157,23 @@ export default new Vuex.Store({
         window.windowState = payload.windowState;
         setTimeout(() => {
           this.commit("zIndexIncrement", payload.windowID);
-        }, 1);
+        }, 0);
         setTimeout(() => {
           this.commit("setActiveWindow", payload.windowID);
-        }, 1);
+        }, 0);
         if (preventAppendingOpenWindow == false) {
           setTimeout(() => {
             this.commit("pushActiveWindow", window);
-          }, 1);
+          }, 0);
         }
       } else if (payload.windowState == "close") {
         window.windowState = payload.windowState;
         setTimeout(() => {
           this.commit("popActiveWindow", window);
-        }, 1);
+        }, 0);
         setTimeout(() => {
           this.commit("setActiveWindow", "nil"); 
-        }, 1);
+        }, 0);
       } else if (payload.windowState == "minimize") {
         window.windowState = payload.windowState;
         this.commit("setActiveWindow", "nil"); 

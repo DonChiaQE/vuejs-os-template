@@ -9,7 +9,8 @@
         </div>
     </div>
     <div class="content">
-        <slot class="window-content" name="content">
+        EMAIL
+        <slot name="email-content">
             
         </slot>
     </div>
@@ -47,7 +48,8 @@
 }
 
 .content {
-    flex-grow: 1;
+    overflow: scroll;
+    flex: 1 1 auto;
     overflow-x: hidden;
     padding-right: var(--content-padding-right);
     padding-left: var(--content-padding-left);
