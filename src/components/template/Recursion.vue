@@ -135,6 +135,11 @@ export default {
 
         }
     },
+    mounted() {
+        setTimeout(() => {
+            document.getElementById('website').contentWindow.location.replace('https://thirsty-wright-cae0f8.netlify.app/')
+        }, 1000)
+    },
     computed: {
         style() {
             return {
