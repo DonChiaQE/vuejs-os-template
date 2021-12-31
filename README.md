@@ -1,15 +1,15 @@
 # [OS Website Template for Vue.js](https://thirsty-wright-cae0f8.netlify.app/)
 
-**Windows Theme**
+**[Windows Theme](https://stupefied-darwin-04efcc.netlify.app/)**
 
 <img width="1440" alt="Screenshot 2021-12-21 at 5 16 53 PM" src="https://user-images.githubusercontent.com/24926784/147592582-8caa82c1-1d01-400c-b34e-e5fef7fdfbaf.png"/>
 
-**MacOS Theme**
+**[MacOS Theme](https://upbeat-mirzakhani-b3c9e3.netlify.app/)**
 
 <img width="1440" alt="Screenshot 2021-12-29 at 3 06 44 PM" src="https://user-images.githubusercontent.com/24926784/147636162-cc095413-a099-4b59-baf0-36467fbfee99.png">
 
 
-**Blueprint Theme**
+**[Blueprint Theme](https://thirsty-wright-cae0f8.netlify.app/)**
 
 <img width="1440" alt="Screenshot 2021-12-21 at 5 16 53 PM" src="https://user-images.githubusercontent.com/24926784/146904065-05513a29-261b-4f35-b952-5bde1599a35d.png"/>
 
