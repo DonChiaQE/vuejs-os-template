@@ -208,7 +208,7 @@ export default {
                 this.y = 0
             }
             setTimeout(() => {
-                document.getElementById('website').contentWindow.location.replace('https://thirsty-wright-cae0f8.netlify.app/')
+                document.getElementById('website').contentWindow.location.replace('https://upbeat-mirzakhani-b3c9e3.netlify.app/')
             }, 500)
         },
 
