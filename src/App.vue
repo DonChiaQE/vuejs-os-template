@@ -44,10 +44,10 @@
 \*------------------------------------------------------------*/
 import Navbar from './components/blueprint/Navbar.vue'
 // import TopNavbar from './components/macos/TopNavbar.vue'
-import Window from './components/template/Window.vue'
+import Window from './components/template/window.vue'
 import EmailWindow from './components/template/EmailWindow.vue'
 import AppGrid from './components/AppGrid.vue'
-import Placeholder from './components/views/Placeholder.vue'
+import Placeholder from './components/views/placeholder.vue'
 import Photos from './components/views/Photos.vue'
 import Recursion from './components/template/Recursion.vue'
 export default {
