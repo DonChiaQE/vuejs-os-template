@@ -38,11 +38,49 @@ export default new Vuex.Store({
         fullscreen: false // Window Fullscreen State [true, false]
       },
       {
-        windowId: "Recursion", 
+        windowId: "MacOS", 
         windowState: "close",
-        displayName: "Recursion",
-        windowComponent: 'Recursion',
-        windowContent: 'Placeholder',
+        displayName: "MacOS Theme",
+        windowComponent: 'OSWindow',
+        windowContent: 'MacOS',
+        windowContentPadding: {
+          top: '0px',
+          right: '0px',
+          bottom: '0px',
+          left: '0px'
+        },
+        position: "absolute",
+        positionX: "1vw",
+        positionY: "1vh",
+        iconImage: "placeholder.png",
+        altText: "Placeholder Icon",
+        fullscreen: false
+      },
+      {
+        windowId: "Windows", 
+        windowState: "close",
+        displayName: "Windows Theme",
+        windowComponent: 'OSWindow',
+        windowContent: 'Windows',
+        windowContentPadding: {
+          top: '0px',
+          right: '0px',
+          bottom: '0px',
+          left: '0px'
+        },
+        position: "absolute",
+        positionX: "1vw",
+        positionY: "1vh",
+        iconImage: "placeholder.png",
+        altText: "Placeholder Icon",
+        fullscreen: false
+      },
+      {
+        windowId: "Blueprint", 
+        windowState: "close",
+        displayName: "Blueprint Theme",
+        windowComponent: 'OSWindow',
+        windowContent: 'Blueprint',
         windowContentPadding: {
           top: '0px',
           right: '0px',
@@ -74,25 +112,6 @@ export default new Vuex.Store({
         iconImage: "placeholder.png",
         altText: "Placeholder Icon",
         fullscreen: false
-      },
-      {
-        windowId: "EmailWindow", 
-          windowState: "close",
-          displayName: "Email Window",
-          windowComponent: 'EmailWindow',
-          windowContent: 'Placeholder',
-          windowContentPadding: {
-            top: null,
-            right: null,
-            bottom: null,
-            left: null
-          },
-          position: "absolute",
-          positionX: "6vw",
-          positionY: "12vh",
-          iconImage: "placeholder.png",
-          altText: "Placeholder Icon",
-          fullscreen: false
       },
       // register your new windows here
     ],

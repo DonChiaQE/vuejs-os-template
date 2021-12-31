@@ -39,11 +39,13 @@
 import Navbar from './components/blueprint/Navbar'
 // import TopNavbar from './components/macos/TopNavbar.vue'
 import Window from './components/template/window'
-import EmailWindow from './components/template/EmailWindow'
 import AppGrid from './components/AppGrid'
 import Placeholder from './components/views/placeholder'
 import Photos from './components/views/Photos'
-import Recursion from './components/template/Recursion'
+import OSWindow from './components/template/OSWindow'
+import Blueprint from './components/views/Blueprint'
+import Windows from './components/views/Windows.vue'
+import MacOS from './components/views/MacOS.vue'
 export default {
     name: 'App',
     data: function () {
@@ -57,9 +59,11 @@ export default {
         Navbar,
         AppGrid,
         Placeholder,
-        EmailWindow,
         Photos,
-        Recursion
+        OSWindow,
+        Blueprint,
+        Windows,
+        MacOS
         // TopNavbar,
     },
     created() {
