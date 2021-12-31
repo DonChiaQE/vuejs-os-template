@@ -9,7 +9,7 @@
         </div>
     </div>
     <div style="width: 100%; height: 100%;" class="content">
-        <iframe id="website" src="https://thirsty-wright-cae0f8.netlify.app/"/>
+        <iframe id="website" src="https://upbeat-mirzakhani-b3c9e3.netlify.app/"/>
     </div>
 </interact>
 </template>
@@ -137,7 +137,7 @@ export default {
     },
     mounted() {
         setTimeout(() => {
-            document.getElementById('website').contentWindow.location.replace('https://thirsty-wright-cae0f8.netlify.app/')
+            document.getElementById('website').contentWindow.location.replace('https://upbeat-mirzakhani-b3c9e3.netlify.app/')
         }, 1000)
     },
     computed: {
