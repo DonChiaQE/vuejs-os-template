@@ -38,12 +38,11 @@
 \*------------------------------------------------------------*/
 import Navbar from './components/windows/Navbar'
 // import TopNavbar from './components/macos/TopNavbar.vue'
-import Window from './components/template/window'
+import Window from './components/template/Window'
 import EmailWindow from './components/template/EmailWindow'
 import AppGrid from './components/AppGrid'
-import Placeholder from './components/views/placeholder'
+import Placeholder from './components/views/Placeholder'
 import Photos from './components/views/Photos'
-import Recursion from './components/template/Recursion'
 export default {
     name: 'App',
     data: function () {
@@ -59,7 +58,6 @@ export default {
         Placeholder,
         EmailWindow,
         Photos,
-        Recursion,
         // TopNavbar,
     },
     created() {
