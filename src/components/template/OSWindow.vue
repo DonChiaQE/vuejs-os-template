@@ -1,9 +1,8 @@
 <template>
-<interact draggable :dragOption="dragOption" resizable :resizeOption="resizeOption" class="window window-style" :style="style" @dragmove="dragmove" @resizemove="resizemove" @click.native="setActiveWindow" :class="{ fullscreen: $store.getters.getWindowFullscreen(this.ComponentName), minimize: $store.getters.getWindowById(ComponentName).windowState=='minimize'}">
+<interact draggable :dragOption="dragOption" class="window window-style" :style="style" @dragmove="dragmove" @resizemove="resizemove" @click.native="setActiveWindow" :class="{ fullscreen: $store.getters.getWindowFullscreen(this.ComponentName), minimize: $store.getters.getWindowById(ComponentName).windowState=='minimize'}">
     <div class="top-bar" id="top-bar">
         <h3 class="window-name">{{this.window.displayName}}</h3>
         <div class="triple-button">
-            <!-- <button class="expand-button button" @click="toggleWindowSize"></button> -->
             <button class="minimize-button button" @click="minimizeWindow"></button>
             <button class="close-button button" @click="closeWindow"></button>
         </div>
@@ -36,6 +35,13 @@
     touch-action: none;
     flex-flow: column;
     display: flex;
+}
+
+@media only screen and (max-width: 992px) {
+    .window {
+        min-height: 50vh;
+        min-width: 90vw;
+    }
 }
 
 .fullscreen {
