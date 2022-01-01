@@ -36,13 +36,13 @@
     Import Components, you can change the path for different
     component themes (blueprint, windows, macos)
 \*------------------------------------------------------------*/
-import Navbar from './components/windows/Navbar.vue'
+import Navbar from './components/windows/Navbar'
 // import TopNavbar from './components/macos/TopNavbar.vue'
-import Window from './components/template/Window.vue'
-import EmailWindow from '@/components/template/EmailWindow.vue'
-import AppGrid from './components/AppGrid.vue'
-import Placeholder from './components/views/Placeholder.vue'
-import Photos from './components/views/Photos.vue'
+import Window from './components/template/Window'
+import EmailWindow from '@/components/template/EmailWindow'
+import AppGrid from './components/AppGrid'
+import Placeholder from './components/views/Placeholder'
+import Photos from './components/views/Photos'
 export default {
     name: 'App',
     data: function () {
