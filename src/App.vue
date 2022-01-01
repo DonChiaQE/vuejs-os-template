@@ -38,9 +38,9 @@
 \*------------------------------------------------------------*/
 import Navbar from './components/blueprint/Navbar'
 // import TopNavbar from './components/macos/TopNavbar.vue'
-import Window from './components/template/window'
+import Window from './components/template/Window'
 import AppGrid from './components/AppGrid'
-import Placeholder from './components/views/placeholder'
+import Placeholder from './components/views/Placeholder'
 import Photos from './components/views/Photos'
 import OSWindow from './components/template/OSWindow'
 import Blueprint from './components/views/Blueprint'
