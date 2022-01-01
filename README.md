@@ -106,7 +106,7 @@ displayName: "New Window"
 4. The content displayed within the window is registered to the 'Placeholder' component. Simply create a new content component under ```/src/components/views``` folder and replace 'windowContent' with the name of the new component created. 
 
 ```js
-windowContent: 'MyNewWindowContent"
+windowContent: "MyNewWindowContent"
 ```
 
 /src/components/views/MyNewWindowContent.vue
