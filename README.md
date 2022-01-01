@@ -43,19 +43,15 @@ This project aims to create an interactive Web OS template for Vue. Included in 
 <a name="setup-instruction"></a>
 ## Setup Instructions
 
-1. Clone the project
-
-```bash
-$ git clone https://github.com/dhs17y2adonchia/vuejs-os-template.git
-```
-
+1. Download the latest release from this page's sidebae
 
 2. Make sure you have Vue.js installed 
 
 [Official Documentation from Vue](https://vuejs.org/v2/guide/installation.html)
 
+3. Rename the folder to ```vuejs-os-template```
 
-3. Cd into project folder and install packages + dependencies
+4. Cd into project folder and install packages + dependencies
 
 
 ```bash
