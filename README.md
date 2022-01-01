@@ -24,7 +24,7 @@ This project aims to create an interactive Web OS template for Vue. Included in 
 ## Features
 - Interactable and Draggable Windows
 - Built-in Navigation Bar (+ logic)
-- Window Logic
+- Window Logic (States, Fullscreen, Minimization etc.)
 - Themes (Blueprint, Windows, MacOS)
 
 <a name="technologies"></a>
