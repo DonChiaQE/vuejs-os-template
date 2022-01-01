@@ -38,25 +38,6 @@ export default new Vuex.Store({
         fullscreen: false // Window Fullscreen State [true, false]
       },
       {
-        windowId: "Recursion", 
-        windowState: "close",
-        displayName: "Recursion",
-        windowComponent: 'Recursion',
-        windowContent: 'Placeholder',
-        windowContentPadding: {
-          top: '0px',
-          right: '0px',
-          bottom: '0px',
-          left: '0px'
-        },
-        position: "absolute",
-        positionX: "1vw",
-        positionY: "1vh",
-        iconImage: "placeholder.png",
-        altText: "Placeholder Icon",
-        fullscreen: false
-      },
-      {
         windowId: "PhotoWindow", 
         windowState: "close",
         displayName: "Photos",
