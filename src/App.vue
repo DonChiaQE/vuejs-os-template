@@ -60,11 +60,6 @@ export default {
         Photos,
         TopNavbar,
     },
-    created() {
-        for (let i = 0; i < this.windows.length; i++) {
-            this.windowComponents[this.windows[i].windowId] = this.windows[i].windowContent
-        }
-    },
     computed: {
         style() {
             return {
