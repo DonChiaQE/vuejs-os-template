@@ -27,7 +27,7 @@
         </button>
     </div>
     <div class="spacer"></div>
-    <p class="label">Active Window: {{$store.getters.getActiveWindow}}</p>
+    <p class="label">{{this.time}}</p>
 </nav>
 </template>
 
@@ -39,11 +39,14 @@
 .navbar-container {
     width: 100%;
     height: 50px;
-    background-color: #0073ff;
+    background-color: rgb(0, 115, 255, 0.5);
     z-index: 100;
     display: flex;
     flex-direction: row;
     align-items: center;
+    overflow: hidden;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
 }
 
 /*-------------------------------------------*\
@@ -66,11 +69,11 @@
 }
 
 .open {
-    background: green;
+    background: rgb(0, 115, 255, 1);
 }
 
 .minimize {
-    background: yellow;
+    background: rgb(0, 115, 255, 0.6);
 }
 
 .close {
@@ -89,7 +92,7 @@
     font-weight: bold;
     color: white;
     text-align: center;
-    padding-right: 10px;
+    padding-right: 20px;
 }
 
 /*-------------------------------------------*\
@@ -106,12 +109,23 @@ button {
 </style>
 
 <script>
+import moment from 'moment'
 export default {
     name: 'Navbar',
     data: function() {
         return {
             activeWindows: this.$store.getters.getActiveWindows,
+            time: '',
+            date: ''
         }
+    },
+    beforeMount() {
+        setInterval(() => {
+            this.time = moment().format('hh:mm A')
+        }, 1000)
+        setInterval(() => {
+            this.date = moment().format('ddd DD MMMM')
+        }, 1000)
     },
     methods: {
         openWindow(windowId) {

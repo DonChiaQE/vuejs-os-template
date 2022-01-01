@@ -30,7 +30,7 @@
     padding: 0px;
     margin: 0px;
     min-height: 90vh;
-    min-width: 90vw;
+    min-width: 45vw;
     user-select: none;
     -ms-touch-action: none;
     touch-action: none;
