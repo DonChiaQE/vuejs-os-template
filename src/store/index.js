@@ -33,7 +33,7 @@ export default new Vuex.Store({
         position: "absolute", // Window Position
         positionX: "10vw", // Window Position X (when first opened)
         positionY: "15vh", // Window Position Y (when first opened)
-        iconImage: "placeholder.png", // Window Icon Image
+        iconImage: "loremipsum.png", // Window Icon Image
         altText: "Placeholder Icon", // Window Icon Alt Text
         fullscreen: false // Window Fullscreen State [true, false]
       },
@@ -52,7 +52,7 @@ export default new Vuex.Store({
         position: "absolute",
         positionX: "1vw",
         positionY: "1vh",
-        iconImage: "placeholder.png",
+        iconImage: "macos.jpg",
         altText: "Placeholder Icon",
         fullscreen: false
       },
@@ -71,7 +71,7 @@ export default new Vuex.Store({
         position: "absolute",
         positionX: "1vw",
         positionY: "1vh",
-        iconImage: "placeholder.png",
+        iconImage: "windows.png",
         altText: "Placeholder Icon",
         fullscreen: false
       },
@@ -90,7 +90,7 @@ export default new Vuex.Store({
         position: "absolute",
         positionX: "1vw",
         positionY: "1vh",
-        iconImage: "placeholder.png",
+        iconImage: "blueprint.png",
         altText: "Placeholder Icon",
         fullscreen: false
       },
@@ -109,7 +109,7 @@ export default new Vuex.Store({
         position: "absolute",
         positionX: "6vw",
         positionY: "12vh",
-        iconImage: "placeholder.png",
+        iconImage: "photos.png",
         altText: "Placeholder Icon",
         fullscreen: false
       },

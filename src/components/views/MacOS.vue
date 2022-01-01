@@ -1,5 +1,5 @@
 <template>
-    <iframe id="website" src="https://upbeat-mirzakhani-b3c9e3.netlify.app/"/>
+    <iframe id="website" src="https://macos-template.netlify.app/"/>
 </template>
 
 <style scoped>

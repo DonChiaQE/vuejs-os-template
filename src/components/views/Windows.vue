@@ -1,5 +1,5 @@
 <template>
-    <iframe id="" src="https://stupefied-darwin-04efcc.netlify.app/"/>
+    <iframe id="" src="https://windows-template.netlify.app/"/>
 </template>
 
 <style scoped>

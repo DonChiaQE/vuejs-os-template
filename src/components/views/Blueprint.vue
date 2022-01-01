@@ -1,5 +1,5 @@
 <template>
-    <iframe id="website" src="https://thirsty-wright-cae0f8.netlify.app/"/>
+    <iframe id="website" src="https://blueprint-template.netlify.app/"/>
 </template>
 
 <style scoped>
