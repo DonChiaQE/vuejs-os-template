@@ -35,7 +35,7 @@
     width: 100%;
     height: 35px;
     background: rgb(192, 192, 192);
-    border-top: solid rgb(32, 32, 32) 1px;
+    border-top: solid rgb(32, 32, 32) 2px;
     z-index: 100;
     display: flex;
     flex-direction: row;
