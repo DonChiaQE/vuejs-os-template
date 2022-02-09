@@ -19,7 +19,7 @@ export default new Vuex.Store({
 
     windows: [
       {
-        windowId: "LIKEAWAVE.CO", // Unique ID
+        windowId: "lawco.exe", // Unique ID -- !!! about page !!!
         windowState: "close", // Window State [open, close, minimize]
         displayName: "LIKEAWAVE.CO", // Display Name (title under icon)
         windowComponent: 'window', // Window Component (can be changed to use modified windows)
@@ -40,7 +40,7 @@ export default new Vuex.Store({
       {
         windowId: "PhotoWindow", 
         windowState: "close",
-        displayName: "Photos",
+        displayName: "photos",
         windowComponent: 'window',
         windowContent: 'Photos',
         windowContentPadding: {
