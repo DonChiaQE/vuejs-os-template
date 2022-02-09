@@ -19,9 +19,9 @@ export default new Vuex.Store({
 
     windows: [
       {
-        windowId: "LoremIpsum", // Unique ID
+        windowId: "LIKEAWAVE.CO", // Unique ID
         windowState: "close", // Window State [open, close, minimize]
-        displayName: "Lorem Ipsum", // Display Name (title under icon)
+        displayName: "LIKEAWAVE.CO", // Display Name (title under icon)
         windowComponent: 'window', // Window Component (can be changed to use modified windows)
         windowContent: 'Placeholder', // Window Content (used under slots)
         windowContentPadding: {
@@ -33,8 +33,8 @@ export default new Vuex.Store({
         position: "absolute", // Window Position
         positionX: "10vw", // Window Position X (when first opened)
         positionY: "15vh", // Window Position Y (when first opened)
-        iconImage: "placeholder.png", // Window Icon Image
-        altText: "Placeholder Icon", // Window Icon Alt Text
+        iconImage: "wave-icon.png", // Window Icon Image
+        altText: "Wave Icon", // Window Icon Alt Text
         fullscreen: false // Window Fullscreen State [true, false]
       },
       {
