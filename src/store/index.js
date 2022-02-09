@@ -37,7 +37,26 @@ export default new Vuex.Store({
         altText: "Wave Icon", // Window Icon Alt Text
         fullscreen: false // Window Fullscreen State [true, false]
       },
-      /* {
+      {
+        windowId: "PhotoWindow", 
+        windowState: "close",
+        displayName: "Photos",
+        windowComponent: 'window',
+        windowContent: 'Photos',
+        windowContentPadding: {
+          top: '5%',
+          right: '5%',
+          bottom: '5%',
+          left: '5%'
+        },
+        position: "absolute",
+        positionX: "6vw",
+        positionY: "12vh",
+        iconImage: "photos-icon.png",
+        altText: "Photos Icon",
+        fullscreen: false
+      },
+            /* {
         windowId: "MacOS", 
         windowState: "close",
         displayName: "MacOS Theme",
@@ -98,25 +117,6 @@ export default new Vuex.Store({
         fullscreen: false
       },
       */
-      {
-        windowId: "PhotoWindow", 
-        windowState: "close",
-        displayName: "Photos",
-        windowComponent: 'window',
-        windowContent: 'Photos',
-        windowContentPadding: {
-          top: '5%',
-          right: '5%',
-          bottom: '5%',
-          left: '5%'
-        },
-        position: "absolute",
-        positionX: "6vw",
-        positionY: "12vh",
-        iconImage: "placeholder.png",
-        altText: "Placeholder Icon",
-        fullscreen: false
-      },
       // register your new windows here
     ],
   },
