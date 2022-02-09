@@ -37,7 +37,7 @@ export default new Vuex.Store({
         altText: "Wave Icon", // Window Icon Alt Text
         fullscreen: false // Window Fullscreen State [true, false]
       },
-      {
+      /* {
         windowId: "MacOS", 
         windowState: "close",
         displayName: "MacOS Theme",
@@ -56,6 +56,7 @@ export default new Vuex.Store({
         altText: "Placeholder Icon",
         fullscreen: false
       },
+      */
       {
         windowId: "Windows", 
         windowState: "close",
@@ -75,6 +76,7 @@ export default new Vuex.Store({
         altText: "Placeholder Icon",
         fullscreen: false
       },
+      /*
       {
         windowId: "Blueprint", 
         windowState: "close",
@@ -94,6 +96,7 @@ export default new Vuex.Store({
         altText: "Placeholder Icon",
         fullscreen: false
       },
+      */
       {
         windowId: "PhotoWindow", 
         windowState: "close",
