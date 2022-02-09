@@ -1,6 +1,7 @@
 <template>
 <div class="grid">
     <img src="https://i.imgur.com/uQilTqp.jpg" />
+    <img src="https://i.imgur.com/Tleeg1W.jpg" />
 
 </div>
 </template>
