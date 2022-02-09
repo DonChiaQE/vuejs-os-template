@@ -1,6 +1,6 @@
 <template>
 <p>
-    <blink>downloading tides...</blink>
+    downloading tides...
     
 </p>
 </template>
