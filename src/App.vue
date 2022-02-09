@@ -43,9 +43,9 @@ import AppGrid from './components/AppGrid'
 import Placeholder from './components/views/Placeholder'
 import Photos from './components/views/Photos'
 import OSWindow from './components/template/OSWindow'
-import Blueprint from './components/views/Blueprint'
+// import Blueprint from './components/views/Blueprint'
 import Windows from './components/views/Windows.vue'
-import MacOS from './components/views/MacOS.vue'
+// import MacOS from './components/views/MacOS.vue'
 export default {
     name: 'App',
     data: function () {
