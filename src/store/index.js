@@ -21,7 +21,7 @@ export default new Vuex.Store({
       {
         windowId: "lawco.exe", // Unique ID -- !!! about page !!!
         windowState: "close", // Window State [open, close, minimize]
-        displayName: "LIKEAWAVE.CO", // Display Name (title under icon)
+        displayName: "lawco.exe", // Display Name (title under icon)
         windowComponent: 'window', // Window Component (can be changed to use modified windows)
         windowContent: 'Placeholder', // Window Content (used under slots)
         windowContentPadding: {
