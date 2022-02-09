@@ -56,7 +56,7 @@ export default new Vuex.Store({
         altText: "Placeholder Icon",
         fullscreen: false
       },
-      */
+      
       {
         windowId: "Windows", 
         windowState: "close",
@@ -69,6 +69,7 @@ export default new Vuex.Store({
           bottom: '0px',
           left: '0px'
         },
+        
         position: "absolute",
         positionX: "1vw",
         positionY: "1vh",
@@ -76,7 +77,7 @@ export default new Vuex.Store({
         altText: "Placeholder Icon",
         fullscreen: false
       },
-      /*
+      
       {
         windowId: "Blueprint", 
         windowState: "close",
