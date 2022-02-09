@@ -1,15 +1,7 @@
 <template>
 <div class="grid">
     <img src="https://i.imgur.com/uQilTqp.jpg" />
-    <img src="https://source.unsplash.com/1200x800" />
-    <img src="https://source.unsplash.com/800x1600" />
-    <img src="https://source.unsplash.com/1800x500" />
-    <img src="https://source.unsplash.com/700x1500" />
-    <img src="https://source.unsplash.com/600x600/" />
-    <img src="https://source.unsplash.com/480x500" />
-    <img src="https://source.unsplash.com/600x800" />
-    <img src="https://source.unsplash.com/900x800" />
-    <img src="https://source.unsplash.com/500x750" />
+
 </div>
 </template>
 
