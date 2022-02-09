@@ -34,8 +34,8 @@
 .navbar-container {
     width: 100%;
     height: 35px;
-    background: rgb(32, 32, 32);
-    border-top: solid rgb(250, 250, 250) 2px;
+    background: rgb(192, 192, 192);
+    border-top: solid rgb(32, 32, 32) 1px;
     z-index: 100;
     display: flex;
     flex-direction: row;
